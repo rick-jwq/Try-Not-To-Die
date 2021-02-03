@@ -46,3 +46,6 @@ sysinfo.txt
 
 # Crashlytics generated file
 crashlytics-build.properties
+
+# packages-lock.json
+packages-lock.json
