@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
 
     public float knockOutForce = 20f;
+    public float movingSpeed = 3f;
     private float hp = 100f;
     private Rigidbody rb;
 
@@ -18,7 +19,9 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(hp <= 0f)
+        transform.Translate(new Vector3(-1, 0, 0) * Time.deltaTime * movingSpeed);
+
+        if (hp <= 0f)
         {
             rb.AddForce(transform.forward * knockOutForce);
             Destroy(gameObject, 2f);
@@ -33,5 +36,13 @@ public class Enemy : MonoBehaviour
     public float getHP()
     {
         return hp;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Player")
+        {
+            Debug.Log("Player Reduce Health!");
+        }
     }
 }

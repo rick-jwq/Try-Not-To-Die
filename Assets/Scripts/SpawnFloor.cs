@@ -11,14 +11,17 @@ public class SpawnFloor : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(destroy)
+        if (other.gameObject.tag == "Player" && other.GetType() == typeof(CapsuleCollider))
         {
-            Destroy(transform.parent.gameObject);
-        }
-        else
-        {
-            float new_x = transform.position.x + 20f;
-            Instantiate(Floor, new Vector3(new_x, transform.position.y, transform.position.z), Quaternion.identity);
+            if (destroy)
+            {
+                Destroy(transform.parent.gameObject);
+            }
+            else
+            {
+                float new_x = transform.position.x + 20f;
+                Instantiate(Floor, new Vector3(new_x, transform.position.y, transform.position.z), Quaternion.identity);
+            }
         }
     }
 }

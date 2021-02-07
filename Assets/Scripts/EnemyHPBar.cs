@@ -9,10 +9,12 @@ public class EnemyHPBar : MonoBehaviour
 
     private RectTransform HPValueBar;
     private Enemy enemyScript;
+    private CanvasGroup cg;
 
     private void Start()
     {
         HPValueBar = GetComponentsInChildren<RectTransform>()[1];
+        cg = GetComponent<CanvasGroup>();
     }
 
     // Update is called once per frame
@@ -21,7 +23,7 @@ public class EnemyHPBar : MonoBehaviour
         GameObject enemy = GameObject.FindGameObjectWithTag("Enemy");
         if (enemy)
         {
-            gameObject.SetActive(true);
+            cg.alpha = 1;
             Enemy enemyScript = enemy.GetComponent<Enemy>();
             Vector3 headPosition = Camera.main.WorldToScreenPoint(enemy.transform.GetChild(0).position);
             transform.position = headPosition;
@@ -31,7 +33,7 @@ public class EnemyHPBar : MonoBehaviour
         }
         else
         {
-            gameObject.SetActive(false);
+            cg.alpha = 0;
         }
     }
 }
