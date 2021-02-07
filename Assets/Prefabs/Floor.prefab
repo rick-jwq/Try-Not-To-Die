@@ -200,8 +200,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movingSpeed: 5
-  food: {fileID: 0}
-  water: {fileID: 0}
 --- !u!1 &7126832065573684147
 GameObject:
   m_ObjectHideFlags: 0
