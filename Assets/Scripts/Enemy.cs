@@ -11,9 +11,12 @@ public class Enemy : MonoBehaviour
     private float hp = 100f;
     private Rigidbody rb;
 
+    private CharacterControll cc;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        cc = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterControll>();
     }
 
     // Update is called once per frame
@@ -42,7 +45,8 @@ public class Enemy : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            Debug.Log("Player Reduce Health!");
+            cc.ChangeHealth(-20);
+            Destroy(gameObject, 1f);
         }
     }
 }

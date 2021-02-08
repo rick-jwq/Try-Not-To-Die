@@ -20,10 +20,8 @@ public class Water : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 position = transform.position;
-        position.x=position.x - speed * Time.deltaTime;
-        transform.position=position;
-        if (position.x < -8)
+        transform.Translate(new Vector3(-1, 0, 0) * Time.deltaTime * speed);
+        if (transform.position.x < -8)
         {
             Destroy(gameObject);
         }

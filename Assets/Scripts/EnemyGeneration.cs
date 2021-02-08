@@ -18,7 +18,7 @@ public class EnemyGeneration : MonoBehaviour
         {
             float x = Random.Range(15, 30);
             float y = 1;
-            float z = Random.Range(2, 7);
+            float z = 5;
 
             GameObject enemy = Instantiate(enemyPrefab, new Vector3(x, y, z), Quaternion.identity);
             Destroy(enemy, 10f);
