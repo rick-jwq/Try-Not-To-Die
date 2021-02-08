@@ -48,35 +48,35 @@ public class CharacterControll : MonoBehaviour
     {
         if (currentHealth + amount <= 0)
         {
-            Debug.Log("currentHealth: " + currentHealth + "/" + maxHealth);
-            Debug.Log("You lost");
-            UnityEditor.EditorApplication.isPlaying = false;
+            //Debug.Log("currentHealth: " + currentHealth + "/" + maxHealth);
+            //Debug.Log("You lost");
+            //UnityEditor.EditorApplication.isPlaying = false;
         }
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
-        Debug.Log("currentHealth: " + currentHealth + "/" + maxHealth);
+        //Debug.Log("currentHealth: " + currentHealth + "/" + maxHealth);
     }
 
     public void ChangeHunger(int amount)
     {
         if (currentHunger + amount <= 0)
         {
-            Debug.Log("currentHunger: " + currentHunger + "/" + maxHunger);
-            Debug.Log("You lost");
-            UnityEditor.EditorApplication.isPlaying = false;
+            //Debug.Log("currentHunger: " + currentHunger + "/" + maxHunger);
+            //Debug.Log("You lost");
+            //UnityEditor.EditorApplication.isPlaying = false;
         }
         currentHunger = Mathf.Clamp(currentHunger + amount, 0, maxHunger);
-        Debug.Log("currentHunger: " + currentHunger + "/" + maxHunger);
+        //Debug.Log("currentHunger: " + currentHunger + "/" + maxHunger);
     }
 
     public void ChangeThirst(int amount)
     {
         if (currentThirst + amount <= 0)
         {
-            Debug.Log("currentThirst: " + currentThirst + "/" + maxThirst);
-            Debug.Log("You lost");
-            UnityEditor.EditorApplication.isPlaying = false;
+            //Debug.Log("currentThirst: " + currentThirst + "/" + maxThirst);
+            //Debug.Log("You lost");
+            //UnityEditor.EditorApplication.isPlaying = false;
         }
         currentThirst = Mathf.Clamp(currentThirst + amount, 0, maxThirst);
-        Debug.Log("currentThirst: " + currentThirst + "/" + maxThirst);
+        //Debug.Log("currentThirst: " + currentThirst + "/" + maxThirst);
     }
 }
