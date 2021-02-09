@@ -245,7 +245,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 110, y: 20}
-  m_SizeDelta: {x: 109.95, y: 30}
+  m_SizeDelta: {x: 109.95, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &45197946
 MonoBehaviour:
@@ -737,7 +737,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: -20}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 160, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &536282952
 MonoBehaviour:
@@ -1340,7 +1340,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 10, y: -20}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 160, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1368949413
 MonoBehaviour:
@@ -1418,7 +1418,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: -20, y: -20}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 160, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1406397901
 MonoBehaviour:
@@ -1471,7 +1471,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1525901969}
   - component: {fileID: 1525901968}
-  - component: {fileID: 1525901970}
   m_Layer: 0
   m_Name: ItemGeneration
   m_TagString: Untagged
@@ -1491,11 +1490,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0f5462978c1aa94f8e90f3df378f88b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ChanceToSpawn: 0.6
   foodPrefab: {fileID: 5313270068264388040, guid: 6957779ccd44a8d47a07b64e62ad48d5,
     type: 3}
+  ChanceToSpawnFood: 0.4
   waterPrefab: {fileID: 6824773731286202212, guid: f3e8fd7f25af6db41bbdb892bc2d2ef3,
     type: 3}
-  ChanceToSpawn: 1
+  ChanceToSpawnWater: 0.4
+  enemyPrefab: {fileID: 1805911770754687676, guid: 9c64a179114c64647a1052a433d3e706,
+    type: 3}
 --- !u!4 &1525901969
 Transform:
   m_ObjectHideFlags: 0
@@ -1510,21 +1513,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1525901970
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1525901967}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b02cf9b0fd96c2a4fb9a0b0bc053ba41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 1805911770754687676, guid: 9c64a179114c64647a1052a433d3e706,
-    type: 3}
-  ChanceToSpawn: 0.2
 --- !u!1 &1556557031
 GameObject:
   m_ObjectHideFlags: 0

@@ -31,7 +31,7 @@ public class Water : MonoBehaviour
         if(Input.GetMouseButtonDown(1))
         {
             Destroy(gameObject);
-            cc.ChangeThirst(10);
+            cc.ChangeThirst(20);
         }
     }
 }
