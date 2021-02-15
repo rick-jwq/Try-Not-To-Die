@@ -9,7 +9,7 @@ public class EnemyGeneration : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("EnemyCreate", 2f, 5f);
+        InvokeRepeating("EnemyCreate", 3f, 6f);
     }
 
     void EnemyCreate()
