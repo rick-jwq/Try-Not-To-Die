@@ -9,13 +9,11 @@ public class Enemy : MonoBehaviour
     public float knockOutForce = 20f;
     public float movingSpeed = 3f;
     private float hp = 100f;
-    private Rigidbody rb;
 
     private CharacterControll cc;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
         cc = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterControll>();
     }
 
@@ -26,8 +24,7 @@ public class Enemy : MonoBehaviour
 
         if (hp <= 0f)
         {
-            rb.AddForce(transform.forward * knockOutForce);
-            Destroy(gameObject, 2f);
+            Destroy(gameObject);
         }
     }
 
