@@ -139,3 +139,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   knockOutForce: 60
   movingSpeed: 3
+  hp: 4
+  damageAmount: 1
+  arrayOfInts: 
+  level: 0
+  EnemyBar: {fileID: 8305214882353587458, guid: e78f4aeb236559b44a41ce1d6c219c0f,
+    type: 3}
+  canvas: {fileID: 0}
+  isTracked: 0
