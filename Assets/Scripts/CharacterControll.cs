@@ -5,21 +5,24 @@ using UnityEngine;
 public class CharacterControll : MonoBehaviour
 {
     public int maxHealth = 100;
-    public int maxHunger = 100;
-    public int maxThirst = 100;
+    public int maxYin = 100;
+    public int maxYang = 100;
+    public int initYin = 50;
 
     public int losingSpeed = -5;
 
     public float time = 2.0f;
 
-    int currentHealth;
+    bool isDrainingHealth = false;
+
+    public int currentHealth;
     public int health { get { return currentHealth; } }
 
-    int currentHunger;
-    public int hunger { get { return currentHunger; } }
+    int currentYin;
+    public int yin { get { return currentYin; } }
 
-    int currentThirst;
-    public int thirst { get { return currentThirst; } }
+    int currentYang;
+    public int yang { get { return currentYang; } }
 
     private Rigidbody rb;
 
@@ -28,19 +31,21 @@ public class CharacterControll : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         currentHealth = maxHealth;
-        currentHunger = maxHunger;
-        currentThirst = maxThirst;
+        currentYin = initYin;
+        currentYang = maxYang - initYin;
     }
 
     // Update is called once per frame
     void Update()
     {
-        time -= Time.deltaTime;
-        if (time < 0)
+        if (isDrainingHealth)
         {
-            time = 2.0f;
-            ChangeHunger(losingSpeed);
-            ChangeThirst(losingSpeed);
+            time -= Time.deltaTime;
+            if (time < 0)
+            {
+                time = 2.0f;
+                ChangeHealth(losingSpeed);
+            }
         }
     }
 
@@ -48,35 +53,32 @@ public class CharacterControll : MonoBehaviour
     {
         if (currentHealth + amount <= 0)
         {
-            //Debug.Log("currentHealth: " + currentHealth + "/" + maxHealth);
-            //Debug.Log("You lost");
-            //UnityEditor.EditorApplication.isPlaying = false;
+            // You lost
         }
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
-        //Debug.Log("currentHealth: " + currentHealth + "/" + maxHealth);
     }
 
-    public void ChangeHunger(int amount)
+    public void ChangeYinYang(bool isYin, int amount)
     {
-        if (currentHunger + amount <= 0)
-        {
-            //Debug.Log("currentHunger: " + currentHunger + "/" + maxHunger);
-            //Debug.Log("You lost");
-            //UnityEditor.EditorApplication.isPlaying = false;
-        }
-        currentHunger = Mathf.Clamp(currentHunger + amount, 0, maxHunger);
-        //Debug.Log("currentHunger: " + currentHunger + "/" + maxHunger);
-    }
+        if (!isYin) amount = -amount;
 
-    public void ChangeThirst(int amount)
-    {
-        if (currentThirst + amount <= 0)
+        if (amount + currentYin <= 10 || amount + currentYin >= 90)
         {
-            //Debug.Log("currentThirst: " + currentThirst + "/" + maxThirst);
-            //Debug.Log("You lost");
-            //UnityEditor.EditorApplication.isPlaying = false;
+            isDrainingHealth = true;
+            losingSpeed = -10;
         }
-        currentThirst = Mathf.Clamp(currentThirst + amount, 0, maxThirst);
-        //Debug.Log("currentThirst: " + currentThirst + "/" + maxThirst);
+        else if (amount + currentYin <= 20 || amount + currentYin >= 80)
+        {
+            isDrainingHealth = true;
+            losingSpeed = -5;
+        }
+        else
+        {
+            isDrainingHealth = false;
+        }
+
+        time = 2.0f;
+        currentYin = Mathf.Clamp(currentYin + amount, 0, maxYin);
+        currentYang = 100 - currentYin;
     }
 }

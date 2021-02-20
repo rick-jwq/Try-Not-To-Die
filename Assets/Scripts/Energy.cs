@@ -32,7 +32,7 @@ public class Energy : MonoBehaviour
             Destroy(gameObject);
 
             //Change to changeYinYang
-            cc.ChangeHunger(10);
+            cc.ChangeYinYang(true, 10);
         }
     }
 }
