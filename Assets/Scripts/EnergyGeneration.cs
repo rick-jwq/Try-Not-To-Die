@@ -17,7 +17,7 @@ public class EnergyGeneration : MonoBehaviour
     {
         if(Random.Range(0f,1f) > 1f - ChanceToSpawn)
         {
-            float x = Random.Range(0, 20);
+            float x = Random.Range(1, 15);
             float y = 1;
             float z = Random.Range(2, 7);
 
