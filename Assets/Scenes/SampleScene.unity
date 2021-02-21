@@ -1471,8 +1471,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1525901969}
   - component: {fileID: 1525901968}
+  - component: {fileID: 1525901970}
   m_Layer: 0
-  m_Name: ItemGeneration
+  m_Name: GlobalControl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1490,14 +1491,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0f5462978c1aa94f8e90f3df378f88b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ChanceToSpawn: 0.6
-  foodPrefab: {fileID: 5313270068264388040, guid: 6957779ccd44a8d47a07b64e62ad48d5,
+  ChanceToSpawn: 1
+  yinPrefab: {fileID: 4253275206731444720, guid: 6cbd15e30ea5c2c4d8e11f888f4b7d33,
     type: 3}
-  ChanceToSpawnFood: 0.4
-  waterPrefab: {fileID: 6824773731286202212, guid: f3e8fd7f25af6db41bbdb892bc2d2ef3,
-    type: 3}
-  ChanceToSpawnWater: 0.4
-  enemyPrefab: {fileID: 1805911770754687676, guid: 9c64a179114c64647a1052a433d3e706,
+  yangPrefab: {fileID: 7913033964722343788, guid: 4ec43cfc4a1ed2247b8ef2391c7e7443,
     type: 3}
 --- !u!4 &1525901969
 Transform:
@@ -1507,12 +1504,26 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1525901967}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 22.875484, y: 7.888099, z: 9.984482}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1525901970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525901967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b02cf9b0fd96c2a4fb9a0b0bc053ba41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 1805911770754687676, guid: 9c64a179114c64647a1052a433d3e706,
+    type: 3}
 --- !u!1 &1556557031
 GameObject:
   m_ObjectHideFlags: 0
