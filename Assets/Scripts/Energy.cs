@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Energy : MonoBehaviour
 {
-
+    public int type;
     private CharacterControll cc;
     private float spawnTime;
     // Start is called before the first frame update
     void Awake()
     {
-        transform.position = new Vector3(Random.Range(15, 30),1, Random.Range(2, 7));
+        //transform.position = new Vector3(Random.Range(15, 30),1, Random.Range(2, 7));
     }
     void Start()
     {
@@ -29,10 +29,21 @@ public class Energy : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            Destroy(gameObject);
-
             //Change to changeYinYang
-            cc.ChangeHunger(10);
+            if(type==1)
+                cc.ChangeHunger(10);
+            else
+                cc.ChangeThirst(10);
+            Destroy(gameObject);
+        }
+        if(Input.GetMouseButtonDown(1))
+        {
+            //Change to changeYinYang
+            if(type==1)
+                cc.ChangeStoredYang(1);
+            else
+                cc.ChangeStoredYin(1);
+            Destroy(gameObject);
         }
     }
 }

@@ -21,7 +21,20 @@ public class CharacterControll : MonoBehaviour
     int currentThirst;
     public int thirst { get { return currentThirst; } }
 
+    int currentStoredYin;
+    public int storedYin { get { return currentStoredYin; } }
+    int currentStoredYang;
+    public int storedYang { get { return currentStoredYang; } }
     private Rigidbody rb;
+
+    public void ChangeStoredYin(int amount)
+    {
+        currentStoredYin = currentStoredYin + amount;
+    }
+    public void ChangeStoredYang(int amount)
+    {
+        currentStoredYang = currentStoredYang + amount;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +43,8 @@ public class CharacterControll : MonoBehaviour
         currentHealth = maxHealth;
         currentHunger = maxHunger;
         currentThirst = maxThirst;
+        currentStoredYin = 0;
+        currentStoredYang = 0;
     }
 
     // Update is called once per frame
