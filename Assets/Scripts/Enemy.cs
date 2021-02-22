@@ -34,7 +34,7 @@ public class Enemy : MonoBehaviour
         GenerateMoves();
 
         canvas = GameObject.FindGameObjectWithTag("Canvas");
-        barInstance = Instantiate(EnemyBar);
+        barInstance = Instantiate(EnemyBar, new Vector3(1000,1000,1000), Quaternion.identity);
         barInstance.transform.SetParent(canvas.transform,false);
         barInstance.GetComponent<EnemyHPBar>().Track(gameObject);
         barInstance.GetComponent<EnemyHPBar>().UpdateArrows();
@@ -72,11 +72,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void OnMouseDown()
-    {
-        hp -= 1f;
-    }
-
     public float getHP()
     {
         return hp;
@@ -86,7 +81,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            cc.ChangeHealth(-1);
+            cc.ChangeHealth(-10);
             DestroySelf();
         }
     }
