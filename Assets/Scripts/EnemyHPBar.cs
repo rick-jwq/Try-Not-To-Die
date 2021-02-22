@@ -5,35 +5,71 @@ using UnityEngine;
 public class EnemyHPBar : MonoBehaviour
 {
     // Start is called before the first frame update
-    public Transform targetEnemy;
+
+    public GameObject arrowContainer;
+    public GameObject UpArrow;
+    public GameObject DownArrow;
+    public GameObject LeftArrow;
+    public GameObject RightArrow;
+
+    private GameObject targetEnemy;
 
     private RectTransform HPValueBar;
-    private Enemy enemyScript;
-    private CanvasGroup cg;
 
     private void Start()
     {
         HPValueBar = GetComponentsInChildren<RectTransform>()[1];
-        cg = GetComponent<CanvasGroup>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        GameObject enemy = GameObject.FindGameObjectWithTag("Enemy");
-        if (enemy)
+        if (targetEnemy)
         {
-            cg.alpha = 1;
-            Enemy enemyScript = enemy.GetComponent<Enemy>();
-            Vector3 headPosition = Camera.main.WorldToScreenPoint(enemy.transform.GetChild(0).position);
+            Enemy enemyScript = targetEnemy.GetComponent<Enemy>();
+            Vector3 headPosition = Camera.main.WorldToScreenPoint(targetEnemy.transform.GetChild(0).position);
             transform.position = headPosition;
 
             float enemyHP = enemyScript.getHP();
-            HPValueBar.sizeDelta = new Vector2(enemyHP * 2, 40);
+            HPValueBar.sizeDelta = new Vector2(enemyHP * 50, 40);
         }
-        else
+    }
+
+    public void Track(GameObject target)
+    {
+        targetEnemy = target;
+    }
+
+    public void UpdateArrows()
+    {
+        Enemy enemyScript = targetEnemy.GetComponent<Enemy>();
+        GameObject arrow;
+        foreach (Transform child in arrowContainer.transform)
         {
-            cg.alpha = 0;
+            Destroy(child.gameObject);
+        }
+        int i;
+        for (i = 0; i < enemyScript.arrayOfInts.Count; i++)
+        {
+            switch (enemyScript.arrayOfInts[i])
+            {
+                case 1:
+                    arrow = Instantiate(UpArrow);
+                    arrow.transform.SetParent(arrowContainer.transform, false);
+                    break;
+                case 2:
+                    arrow = Instantiate(DownArrow);
+                    arrow.transform.SetParent(arrowContainer.transform, false);
+                    break;
+                case 3:
+                    arrow = Instantiate(LeftArrow);
+                    arrow.transform.SetParent(arrowContainer.transform, false);
+                    break;
+                case 4:
+                    arrow = Instantiate(RightArrow);
+                    arrow.transform.SetParent(arrowContainer.transform, false);
+                    break;
+            }
         }
     }
 }

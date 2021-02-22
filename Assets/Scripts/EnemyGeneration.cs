@@ -4,16 +4,23 @@ using UnityEngine;
 
 public class EnemyGeneration : MonoBehaviour
 {
-    public GameObject enemyPrefab;
+    public GameObject YinEnemy;
+    public GameObject YangEnemy;
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("EnemyCreate", 2f, 2f);
+        InvokeRepeating("EnemyCreate", 2f, 3f);
     }
 
     void EnemyCreate()
     {
-        GameObject enemy = Instantiate(enemyPrefab, new Vector3(20, 1, 5), Quaternion.identity);
-        Destroy(enemy, 10f);
+        if (Random.Range(0f, 1f) > 0.5f)
+        {
+            GameObject enemy = Instantiate(YinEnemy, new Vector3(25, 1, 5), Quaternion.identity);
+        }
+        else
+        {
+            GameObject enemy = Instantiate(YangEnemy, new Vector3(25, 1, 5), Quaternion.identity);
+        }
     }
 }

@@ -9,20 +9,17 @@ public class DisplayPlayerStat : MonoBehaviour
     public CharacterControll cc;
 
     private RectTransform HPValue;
-    private RectTransform HungerValue;
-    private RectTransform ThristValue;
+    private RectTransform YinValue;
     void Start()
     {
         HPValue = transform.GetChild(0).GetComponentsInChildren<RectTransform>()[1];
-        HungerValue = transform.GetChild(1).GetComponentsInChildren<RectTransform>()[1];
-        ThristValue = transform.GetChild(2).GetComponentsInChildren<RectTransform>()[1];
+        YinValue = transform.GetChild(1).GetComponentsInChildren<RectTransform>()[1];
     }
 
     // Update is called once per frame
     void Update()
     {
-        HPValue.sizeDelta = new Vector2(cc.health * 2, 40);
-        HungerValue.sizeDelta = new Vector2(cc.hunger * 2, 40);
-        ThristValue.sizeDelta = new Vector2(cc.thirst * 2, 40);
+        HPValue.sizeDelta = new Vector2(cc.health * 2f, 40);
+        YinValue.sizeDelta = new Vector2(cc.yin * 4f, 40);
     }
 }
