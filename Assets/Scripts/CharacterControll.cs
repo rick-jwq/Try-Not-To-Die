@@ -16,6 +16,8 @@ public class CharacterControll : MonoBehaviour
     public Text YangText;
     public GameObject UnbalanceText;
 
+    public GameObject GameEndScreen;
+
   public float time = 0.1f;
 
   bool isDrainingHealth = false;
@@ -78,7 +80,8 @@ public class CharacterControll : MonoBehaviour
   {
     if (currentHealth + amount <= 0)
     {
-      // You lost
+     Time.timeScale = 0;
+     GameEndScreen.SetActive(true);
     }
     currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
   }
