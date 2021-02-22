@@ -10,7 +10,7 @@ public class EnergyGeneration : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("EnergySpawn",2f,5f);
+        InvokeRepeating("EnergySpawn",2f,4f);
     }
 
     void EnergySpawn()

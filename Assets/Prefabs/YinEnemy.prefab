@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1805911770654137396}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1805911770754687666}
@@ -72,7 +72,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1805911770754687676}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1805911770754687664
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -138,10 +138,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knockOutForce: 60
-  movingSpeed: 3
+  movingSpeed: 2
   isYin: 1
   hp: 4
-  damageAmount: 1
   arrayOfInts: 
   level: 0
   EnemyBar: {fileID: 8305214882353587458, guid: e78f4aeb236559b44a41ce1d6c219c0f,

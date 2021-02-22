@@ -25,14 +25,21 @@ public class Energy : MonoBehaviour
       Destroy(gameObject);
     }
   }
-    private void OnMouseDown()
-    {
-        if (isYin)
-            cc.ChangeStoredYin(1);
-        else
-            cc.ChangeStoredYang(1);
-        Destroy(gameObject);
 
-        cc.ChangeYinYang(true, 2);
+    private void OnMouseOver()
+    {
+        if(Input.GetMouseButtonDown(0))
+        {
+            cc.ChangeYinYang(isYin, 6);
+            Destroy(gameObject);
+        }
+        else if(Input.GetMouseButtonDown(1))
+        {
+            if (isYin)
+                cc.ChangeStoredYin(1);
+            else
+                cc.ChangeStoredYang(1);
+            Destroy(gameObject);
+        }
     }
 }

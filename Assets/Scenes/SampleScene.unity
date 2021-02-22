@@ -575,11 +575,11 @@ MonoBehaviour:
   maxHealth: 100
   maxYin: 100
   maxYang: 100
-  initYin: 50
-  losingSpeed: -5
-  YinText: {fileID: 725363726}
-  YangText: {fileID: 756282400}
-  time: 2
+  initYin: 80
+  losingSpeed: -0.2
+  YinText: {fileID: 0}
+  YangText: {fileID: 0}
+  time: 0.1
   currentHealth: 0
 --- !u!1 &705507993
 GameObject:

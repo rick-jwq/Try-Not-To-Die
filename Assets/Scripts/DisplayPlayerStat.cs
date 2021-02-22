@@ -19,7 +19,7 @@ public class DisplayPlayerStat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HPValue.sizeDelta = new Vector2(cc.health * 2, 40);
-        YinValue.sizeDelta = new Vector2(cc.yin * 4, 40);
+        HPValue.sizeDelta = new Vector2(cc.health * 2f, 40);
+        YinValue.sizeDelta = new Vector2(cc.yin * 4f, 40);
     }
 }

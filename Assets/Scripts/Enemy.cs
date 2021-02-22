@@ -6,14 +6,11 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     // Start is called before the first frame update
-
-    public float knockOutForce = 20f;
-    public float movingSpeed = 3f;
+    public float movingSpeed = 2f;
     public bool isYin = false;
 
     //one move kills one hp
     [SerializeField] float hp = 4f;
-    [SerializeField] float damageAmount = 1f;
 
     //array contains all the attack moves player have to make
     public List<int> arrayOfInts;
@@ -50,15 +47,14 @@ public class Enemy : MonoBehaviour
         transform.Translate(new Vector3(-1, 0, 0) * Time.deltaTime * movingSpeed);
     }
 
-    public void TakeDamage()
+    public void TakeDamage(float attackDamage)
     {
-        hp = hp - damageAmount;
+        hp = hp - attackDamage;
         barInstance.GetComponent<EnemyHPBar>().UpdateArrows();
 
         if (hp <= 0f) {
-            cc.ChangeYinYang(isYin,2);
-            Destroy(gameObject);
-            Destroy(barInstance.gameObject);
+            cc.ChangeYinYang(isYin,3);
+            DestroySelf();
         }
     }
 
@@ -90,9 +86,14 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            cc.ChangeHealth(-10);
-            Destroy(gameObject);
-            Destroy(barInstance.gameObject);
+            cc.ChangeHealth(-1);
+            DestroySelf();
         }
+    }
+
+    public void DestroySelf()
+    {
+        Destroy(gameObject);
+        Destroy(barInstance.gameObject);
     }
 }

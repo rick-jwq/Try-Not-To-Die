@@ -9,6 +9,8 @@ public class Attack : MonoBehaviour
     public Enemy target;
 
     public GameObject[] Enemyarry;
+
+    public float attackDamage = 1f;
     void Update()
     {
         //Enemyarry is an array with all exsiting enemy on map.
@@ -42,7 +44,7 @@ public class Attack : MonoBehaviour
         if ((target.arrayOfInts.Count > 0) && (target.arrayOfInts[0] == 1))
         {
             target.arrayOfInts.RemoveAt(0);
-            target.TakeDamage();
+            target.TakeDamage(attackDamage);
         }
 
 
@@ -52,7 +54,7 @@ public class Attack : MonoBehaviour
         if ((target.arrayOfInts.Count > 0) && (target.arrayOfInts[0] == 2))
         {
             target.arrayOfInts.RemoveAt(0);
-            target.TakeDamage();
+            target.TakeDamage(attackDamage);
         }
     }
     void attackRight()
@@ -60,7 +62,7 @@ public class Attack : MonoBehaviour
         if ((target.arrayOfInts.Count > 0) && (target.arrayOfInts[0] == 3))
         {
             target.arrayOfInts.RemoveAt(0);
-            target.TakeDamage();
+            target.TakeDamage(attackDamage);
         }
     }
 
@@ -69,7 +71,7 @@ public class Attack : MonoBehaviour
         if ((target.arrayOfInts.Count > 0) && (target.arrayOfInts[0] == 4))
         {
             target.arrayOfInts.RemoveAt(0);
-            target.TakeDamage();
+            target.TakeDamage(attackDamage);
         }
     }
 

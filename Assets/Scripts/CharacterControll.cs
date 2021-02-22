@@ -10,17 +10,18 @@ public class CharacterControll : MonoBehaviour
   public int maxYang = 100;
   public int initYin = 50;
 
-  public int losingSpeed = -5;
+  public float losingSpeed = -0.3f;
 
     public Text YinText;
     public Text YangText;
+    public GameObject UnbalanceText;
 
-  public float time = 2.0f;
+  public float time = 0.1f;
 
   bool isDrainingHealth = false;
 
-  public int currentHealth;
-  public int health { get { return currentHealth; } }
+  public float currentHealth;
+  public float health { get { return currentHealth; } }
 
   int currentYin;
   public int yin { get { return currentYin; } }
@@ -67,13 +68,13 @@ public class CharacterControll : MonoBehaviour
       time -= Time.deltaTime;
       if (time < 0)
       {
-        time = 2.0f;
+        time = 0.1f;
         ChangeHealth(losingSpeed);
       }
     }
   }
 
-  public void ChangeHealth(int amount)
+  public void ChangeHealth(float amount)
   {
     if (currentHealth + amount <= 0)
     {
@@ -89,19 +90,22 @@ public class CharacterControll : MonoBehaviour
     if (amount + currentYin <= 10 || amount + currentYin >= 90)
     {
       isDrainingHealth = true;
-      losingSpeed = -10;
+      losingSpeed = -0.6f;
+            UnbalanceText.SetActive(true);
     }
     else if (amount + currentYin <= 20 || amount + currentYin >= 80)
     {
       isDrainingHealth = true;
-      losingSpeed = -5;
-    }
+      losingSpeed = -0.3f;
+            UnbalanceText.SetActive(true);
+        }
     else
     {
       isDrainingHealth = false;
-    }
+            UnbalanceText.SetActive(false);
+        }
 
-    time = 2.0f;
+    time = 0.1f;
     currentYin = Mathf.Clamp(currentYin + amount, 0, maxYin);
     currentYang = 100 - currentYin;
   }

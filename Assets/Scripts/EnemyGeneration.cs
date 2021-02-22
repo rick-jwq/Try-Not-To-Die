@@ -9,7 +9,7 @@ public class EnemyGeneration : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("EnemyCreate", 2f, 2f);
+        InvokeRepeating("EnemyCreate", 2f, 3f);
     }
 
     void EnemyCreate()
@@ -17,12 +17,10 @@ public class EnemyGeneration : MonoBehaviour
         if (Random.Range(0f, 1f) > 0.5f)
         {
             GameObject enemy = Instantiate(YinEnemy, new Vector3(25, 1, 5), Quaternion.identity);
-            Destroy(enemy, 10f);
         }
         else
         {
             GameObject enemy = Instantiate(YangEnemy, new Vector3(25, 1, 5), Quaternion.identity);
-            Destroy(enemy, 10f);
         }
     }
 }
