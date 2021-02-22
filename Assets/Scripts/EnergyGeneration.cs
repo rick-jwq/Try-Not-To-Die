@@ -10,14 +10,14 @@ public class EnergyGeneration : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("EnergySpawn",2f,5f);
+        InvokeRepeating("EnergySpawn",2f,4f);
     }
 
     void EnergySpawn()
     {
         if(Random.Range(0f,1f) > 1f - ChanceToSpawn)
         {
-            float x = Random.Range(0, 20);
+            float x = Random.Range(1, 15);
             float y = 1;
             float z = Random.Range(2, 7);
 
