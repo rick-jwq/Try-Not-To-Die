@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
 
     public float knockOutForce = 20f;
     public float movingSpeed = 3f;
+    public bool isYin = false;
 
     //one move kills one hp
     [SerializeField] float hp = 4f;
@@ -47,18 +48,18 @@ public class Enemy : MonoBehaviour
     {
         //keep enemy moving left.
         transform.Translate(new Vector3(-1, 0, 0) * Time.deltaTime * movingSpeed);
-        if (hp <= 0f)
-        {
-            Destroy(gameObject);
-            Destroy(barInstance.gameObject);
-        }
-
     }
 
     public void TakeDamage()
     {
         hp = hp - damageAmount;
         barInstance.GetComponent<EnemyHPBar>().UpdateArrows();
+
+        if (hp <= 0f) {
+            cc.ChangeYinYang(isYin,2);
+            Destroy(gameObject);
+            Destroy(barInstance.gameObject);
+        }
     }
 
     // method to generate moves. 
@@ -75,9 +76,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-
-
-
     private void OnMouseDown()
     {
         hp -= 1f;
@@ -92,7 +90,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            cc.ChangeHealth(-20);
+            cc.ChangeHealth(-10);
             Destroy(gameObject);
             Destroy(barInstance.gameObject);
         }

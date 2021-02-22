@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Energy : MonoBehaviour
 {
-  public int type;
+  public bool isYin;
   private CharacterControll cc;
   private float spawnTime;
   // Start is called before the first frame update
@@ -25,20 +25,14 @@ public class Energy : MonoBehaviour
       Destroy(gameObject);
     }
   }
-  void OnMouseOver()
-  {
-    if (Input.GetMouseButtonDown(0))
+    private void OnMouseDown()
     {
-      //Change to changeYinYang
-      //Item
-      if (type == 1)
-        cc.ChangeStoredYang(1);
-      else
-        cc.ChangeStoredYin(1);
-      Destroy(gameObject);
+        if (isYin)
+            cc.ChangeStoredYin(1);
+        else
+            cc.ChangeStoredYang(1);
+        Destroy(gameObject);
 
-      //Rick
-      cc.ChangeYinYang(true, 10);
+        cc.ChangeYinYang(true, 2);
     }
-  }
 }

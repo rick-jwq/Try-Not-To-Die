@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharacterControll : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class CharacterControll : MonoBehaviour
   public int initYin = 50;
 
   public int losingSpeed = -5;
+
+    public Text YinText;
+    public Text YangText;
 
   public float time = 2.0f;
 
@@ -33,10 +37,13 @@ public class CharacterControll : MonoBehaviour
   public void ChangeStoredYin(int amount)
   {
     currentStoredYin = currentStoredYin + amount;
+        YinText.text = currentStoredYin.ToString();
+
   }
   public void ChangeStoredYang(int amount)
   {
     currentStoredYang = currentStoredYang + amount;
+        YangText.text = currentStoredYang.ToString();
   }
 
   // Start is called before the first frame update
