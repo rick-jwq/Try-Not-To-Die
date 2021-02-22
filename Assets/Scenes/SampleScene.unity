@@ -226,7 +226,7 @@ RectTransform:
   m_Children:
   - {fileID: 756282399}
   m_Father: {fileID: 1763530136}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -410,7 +410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.6994326, b: 0, a: 0.392}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.392}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -577,6 +577,8 @@ MonoBehaviour:
   maxYang: 100
   initYin: 50
   losingSpeed: -5
+  YinText: {fileID: 725363726}
+  YangText: {fileID: 756282400}
   time: 2
   currentHealth: 0
 --- !u!1 &705507993
@@ -683,7 +685,7 @@ GameObject:
   - component: {fileID: 725363727}
   - component: {fileID: 725363726}
   m_Layer: 5
-  m_Name: Text
+  m_Name: YinText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -761,7 +763,7 @@ GameObject:
   - component: {fileID: 756282401}
   - component: {fileID: 756282400}
   m_Layer: 5
-  m_Name: Text
+  m_Name: YangText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -970,7 +972,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.1935879, y: -0, z: -0, w: 0.9810829}
-  m_LocalPosition: {x: 5, y: 7, z: -4}
+  m_LocalPosition: {x: 8, y: 7, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1147,7 +1149,7 @@ RectTransform:
   m_Children:
   - {fileID: 725363725}
   m_Father: {fileID: 1763530136}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1411,7 +1413,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b02cf9b0fd96c2a4fb9a0b0bc053ba41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 1805911770754687676, guid: 9c64a179114c64647a1052a433d3e706,
+  YinEnemy: {fileID: 1805911770754687676, guid: 9c64a179114c64647a1052a433d3e706,
+    type: 3}
+  YangEnemy: {fileID: 7273596599405871554, guid: c11c3cd24fa12f444b93244b9f2211b9,
     type: 3}
 --- !u!114 &1525901971
 MonoBehaviour:
