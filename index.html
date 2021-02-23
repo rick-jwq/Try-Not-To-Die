@@ -4,75 +4,21 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity WebGL Player | Survival7</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
-    <link rel="stylesheet" href="index.css">
     <script src="TemplateData/UnityProgress.js"></script>
     <script src="Build/UnityLoader.js"></script>
     <script>
       var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Build.json", {onProgress: UnityProgress});
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
   </head>
   <body>
-    <div class="wrapper">
-      <div class="titleBar">
-        <span class="title1">Tai Chi Master</span>
-        <span class="title3">You are the greatest Tai Chi Master, and the world is suffering from the Yin Yang monster</span>
-        <span class="title3">Defeat the monsters and save the world!</span>
-        <span class="title3">Watch out for your Yin Yang power balance, or it will cause Qigong deviation and hurt you.</span>
-        <span class="title2">Survive as long as possible!</span>
-      </div>
-      <div class="unityPlayer">
-        <div class="webgl-content">
-          <div id="unityContainer" style="width: 960px; height: 600px"></div>
-          <div class="footer">
-            <div class="webgl-logo"></div>
-            <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
-            <div class="title">Survival7</div>
-          </div>
-        </div>
-      </div>
-  
-      <div class="guideSections">
-        <span>Guide</span>
-        <div class="guideCards">
-          <div class="card" style="width: 40rem;">
-            <img src="Picture1.png" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Visuals</h5>
-              <p class="card-text">Green capsule is you, the Tai Chi Master! Dont let monsters touch you! </p>
-              <p class="card-text">Black(Yin) and White(Yang) cubes are monsters</p>
-              <p class="card-text">Black(Yin) and White(Yang) spheres are energies</p>
-              <p class="card-text">Bottom Left corner shows your skills and bottom right corner shows your stored energy</p>
-            </div>
-          </div>
-          <div class="card" style="width: 40rem;">
-            <img src="Picture1.png" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Control</h5>
-              <p class="card-text">Damage monsters by hiting arrow keys in the order displayed below their health bar.</p>
-              <p class="card-text">Energy can be comsumed directly with Left Mouse Button, or stored with Right Mouse Button</p>
-              <p class="card-text">Click on your stored energies to consume them or save them for skills</p>
-              <p class="card-text">Consuming energies that are just spawned give you bigger balance shift than consuming stored ones</p>
-              <p class="card-text">Click on skill buttons to cast them if you have enough stored energies as indicated</p>
-            </div>
-          </div>
-          <div class="card" style="width: 40rem;">
-            <img src="Picture1.png" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Mechanics</h5>
-              <p class="card-text">Your Yin-Yang balance will shift when killing monsters or consuming energies</p>
-              <p class="card-text">If your Yin-Yang is out of balance, you will start suffering!</p>
-              <p class="card-text">Failing to kill an enemy OR casting skills DOES NOT affect your balance</p>
-              <h5 class="card-title">Skill Intro</h5>
-              <p class="card-text">Slow: slow the enemies for 5 sec</p>
-              <p class="card-text">One hit kill: kill the monsters with 1 hit for 5 sec</p>
-              <p class="card-text">Kill all: kill all the monsters currently on the screen</p>
-            </div>
-          </div>
-        </div>
+    <div class="webgl-content">
+      <div id="unityContainer" style="width: 960px; height: 600px"></div>
+      <div class="footer">
+        <div class="webgl-logo"></div>
+        <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
+        <div class="title">Survival7</div>
       </div>
     </div>
   </body>
