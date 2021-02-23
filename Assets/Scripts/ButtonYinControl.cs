@@ -21,7 +21,7 @@ public class ButtonYinControl : MonoBehaviour
 
     public void UseYin()
     {
-        if (cc.storedYin >= 0)
+        if (cc.storedYin > 0)
         {
             cc.ChangeYinYang(true, 3);
             cc.ChangeStoredYin(-1);
