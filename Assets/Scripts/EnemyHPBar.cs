@@ -16,6 +16,9 @@ public class EnemyHPBar : MonoBehaviour
 
     private RectTransform HPValueBar;
 
+    private Enemy enemyScript;
+    private bool barset = false;
+
     private void Start()
     {
         HPValueBar = GetComponentsInChildren<RectTransform>()[1];
@@ -26,13 +29,25 @@ public class EnemyHPBar : MonoBehaviour
     {
         if (targetEnemy)
         {
-            Enemy enemyScript = targetEnemy.GetComponent<Enemy>();
+            enemyScript = targetEnemy.GetComponent<Enemy>();
             Vector3 headPosition = Camera.main.WorldToScreenPoint(targetEnemy.transform.GetChild(0).position);
             transform.position = headPosition;
+
+            if(!barset)
+                SetBars(enemyScript);
 
             float enemyHP = enemyScript.getHP();
             HPValueBar.sizeDelta = new Vector2(enemyHP * 50, 40);
         }
+    }
+
+
+    private void SetBars(Enemy enemyScript)
+    {
+        float enemyHP = enemyScript.getHP();
+        GetComponent<RectTransform>().sizeDelta = new Vector2(enemyHP * 50, 40);
+        arrowContainer.GetComponent<RectTransform>().sizeDelta = new Vector2(enemyScript.arrayOfInts.Count * 30 * 1.6f, 40);
+        barset = true;
     }
 
     public void Track(GameObject target)

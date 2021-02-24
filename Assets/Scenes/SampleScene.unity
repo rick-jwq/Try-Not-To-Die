@@ -471,6 +471,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cc: {fileID: 555156996}
+  eg: {fileID: 1525901970}
   enemys: []
 --- !u!114 &236310782
 MonoBehaviour:
@@ -2953,10 +2954,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b02cf9b0fd96c2a4fb9a0b0bc053ba41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cc: {fileID: 555156996}
   YinEnemy: {fileID: 1805911770754687676, guid: 9c64a179114c64647a1052a433d3e706,
     type: 3}
   YangEnemy: {fileID: 7273596599405871554, guid: c11c3cd24fa12f444b93244b9f2211b9,
     type: 3}
+  diffChangeTime: 30
+  startHP: 3
+  startMS: 2
+  startSpawnTime: 3
+  HPincrement: 1
+  MSincrement: 1
+  spawnTimeDecrement: 0.7
 --- !u!114 &1525901971
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -28,7 +28,7 @@ public class ButtonStill2Control : MonoBehaviour
             effectTimer -= Time.deltaTime;
 
             //Effect
-            attack.attackDamage = 4f;
+            attack.attackDamage = 99f;
 
             if (effectTimer <= 0)
             {

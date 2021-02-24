@@ -5,6 +5,7 @@ using UnityEngine;
 public class ButtonStill1Control : MonoBehaviour
 {
     public CharacterControll cc;
+    public EnemyGeneration eg;
 
     private int YinConsume=3;
     private int YangConsume=0;
@@ -48,7 +49,7 @@ public class ButtonStill1Control : MonoBehaviour
 
                 for (i = 0; i < enemys.Length; i++)
                 {
-                    enemys[i].GetComponent<Enemy>().movingSpeed = 2f;
+                    enemys[i].GetComponent<Enemy>().movingSpeed = eg.getCurMS();
                 }
             }
         }
