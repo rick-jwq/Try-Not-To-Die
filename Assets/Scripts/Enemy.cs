@@ -77,6 +77,21 @@ public class Enemy : MonoBehaviour
         return hp;
     }
 
+    public void setHP(float newHp)
+    {
+        hp = newHp;
+    }
+
+    public float getMS()
+    {
+        return movingSpeed;
+    }
+
+    public void setMS(float newMS)
+    {
+        movingSpeed = newMS;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")

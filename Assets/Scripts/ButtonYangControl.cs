@@ -21,7 +21,7 @@ public class ButtonYangControl : MonoBehaviour
 
     public void UseYang()
     {
-        if (cc.storedYang >= 0)
+        if (cc.storedYang > 0)
         {
             cc.ChangeYinYang(false,3);
             cc.ChangeStoredYang(-1);
