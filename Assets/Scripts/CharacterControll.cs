@@ -37,7 +37,17 @@ public class CharacterControll : MonoBehaviour
   public int storedYang { get { return currentStoredYang; } }
   private Rigidbody rb;
 
-  public void ChangeStoredYin(int amount)
+  int currentLevel;
+  public int level { get { return currentLevel; } }
+
+  int currentAttack;
+  public int attack { get { return currentAttack; } }
+
+  int scalingFactor;
+
+  public List<GameObject> skills = new List<GameObject>();
+
+    public void ChangeStoredYin(int amount)
   {
     currentStoredYin = currentStoredYin + amount;
         YinText.text = currentStoredYin.ToString();
@@ -60,11 +70,25 @@ public class CharacterControll : MonoBehaviour
 
     currentYin = initYin;
     currentYang = maxYang - initYin;
+    
+    currentLevel = 1;
+    currentAttack = 1;
+    scalingFactor = 1;
+
+    foreach (GameObject obj in skills)
+    {
+        obj.SetActive(true);
+    }
   }
 
-  // Update is called once per frame
-  void Update()
+    // Update is called once per frame
+    void Update()
   {
+    if (currentLevel % 5 == 0)
+    {
+        scalingFactor++;
+    }
+
     if (isDrainingHealth)
     {
       time -= Time.deltaTime;
@@ -112,4 +136,12 @@ public class CharacterControll : MonoBehaviour
     currentYin = Mathf.Clamp(currentYin + amount, 0, maxYin);
     currentYang = 100 - currentYin;
   }
+
+  public void upgrade()
+    {
+        currentLevel++;
+        currentAttack = currentLevel * scalingFactor;
+        maxHealth += scalingFactor * 10;
+        currentHealth = maxHealth;
+    }
 }

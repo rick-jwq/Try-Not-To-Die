@@ -436,7 +436,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &236310780
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1164,6 +1164,10 @@ MonoBehaviour:
   GameEndScreen: {fileID: 2071025457}
   time: 0.1
   currentHealth: 0
+  skills:
+  - {fileID: 236310779}
+  - {fileID: 1290104880}
+  - {fileID: 954325954}
 --- !u!1 &685339020
 GameObject:
   m_ObjectHideFlags: 0
@@ -1939,7 +1943,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &954325955
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2065,6 +2069,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cc: {fileID: 555156996}
+  skillNum: 3
+  isVisible: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -2529,7 +2535,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1290104881
 RectTransform:
   m_ObjectHideFlags: 0
