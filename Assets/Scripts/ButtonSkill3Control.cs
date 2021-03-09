@@ -5,7 +5,6 @@ using UnityEngine;
 public class ButtonSkill3Control : MonoBehaviour
 {
     public CharacterControll cc;
-
     private int YinConsume = 3;
     private int YangConsume = 3;
 
