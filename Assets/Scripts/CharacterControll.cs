@@ -137,9 +137,17 @@ public class CharacterControll : MonoBehaviour
     currentYang = 100 - currentYin;
   }
 
-  public void upgrade()
+    public void upgradeAttack()
     {
-        currentLevel++;
+        //currentLevel++;
+        currentAttack = currentLevel * scalingFactor;
+        maxHealth += scalingFactor * 10;
+        currentHealth = maxHealth;
+    }
+
+    public void upgradeHP()
+    {
+        //currentLevel++;
         currentAttack = currentLevel * scalingFactor;
         maxHealth += scalingFactor * 10;
         currentHealth = maxHealth;

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Analytics;
 
 public class Enemy : MonoBehaviour
 {
@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     public bool isYin = false;
 
     //one move kills one hp
-    [SerializeField] float hp = 4f;
+    public float hp = 4f;
 
     //array contains all the attack moves player have to make
     public List<int> arrayOfInts;
@@ -27,6 +27,8 @@ public class Enemy : MonoBehaviour
 
     private GameObject barInstance;
 
+    private AnalyticsEventTracker et;
+
     void Start()
     {
         arrayOfInts = new List<int>();
@@ -38,6 +40,8 @@ public class Enemy : MonoBehaviour
         barInstance.transform.SetParent(canvas.transform,false);
         barInstance.GetComponent<EnemyHPBar>().Track(gameObject);
         barInstance.GetComponent<EnemyHPBar>().UpdateArrows();
+
+        et = GetComponent<AnalyticsEventTracker>();
     }
 
     // Update is called once per frame
@@ -50,6 +54,7 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(float attackDamage)
     {
         hp = hp - attackDamage;
+        arrayOfInts.Add(Random.Range(1, 5));
         barInstance.GetComponent<EnemyHPBar>().UpdateArrows();
 
         if (hp <= 0f) {
