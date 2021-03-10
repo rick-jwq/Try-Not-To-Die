@@ -183,7 +183,8 @@ MonoBehaviour:
     Keep it balanced in the middle
 
 
-    If it is out of balance, your health will start draining'
+    If
+    it is out of balance, your health will start draining'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1876,7 +1877,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &624248222
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2871,7 +2872,8 @@ MonoBehaviour:
   m_text: 'One day, a powerful alpha turned these two energies to monsters
 
 
-    They came fast and aimed to destroy the order and peace'
+    They
+    came fast and aimed to destroy the order and peace'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3171,8 +3173,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cc: {fileID: 555156996}
-  skillNum: 3
-  isVisible: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -4730,10 +4730,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ChanceToSpawn: 1
-  yinPrefab: {fileID: 4253275206731444720, guid: 6cbd15e30ea5c2c4d8e11f888f4b7d33,
-    type: 3}
-  yangPrefab: {fileID: 7913033964722343788, guid: 4ec43cfc4a1ed2247b8ef2391c7e7443,
-    type: 3}
+  cc: {fileID: 555156996}
 --- !u!4 &1525901969
 Transform:
   m_ObjectHideFlags: 0
@@ -5566,7 +5563,8 @@ MonoBehaviour:
   m_text: 'You are the greatest Tai-Chi Master
 
 
-    You were born here to protect this world'
+    You were born here to protect
+    this world'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
