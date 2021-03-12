@@ -41,7 +41,6 @@ public class Enemy : MonoBehaviour
         barInstance.GetComponent<EnemyHPBar>().Track(gameObject);
         barInstance.GetComponent<EnemyHPBar>().UpdateArrows();
 
-        et = GetComponent<AnalyticsEventTracker>();
     }
 
     // Update is called once per frame
@@ -58,9 +57,18 @@ public class Enemy : MonoBehaviour
         barInstance.GetComponent<EnemyHPBar>().UpdateArrows();
 
         if (hp <= 0f) {
-            et.TriggerEvent();
             cc.ChangeYinYang(isYin,3);
             DestroySelf();
+            AnalyticsResult analyticsResult = Analytics.CustomEvent("MonsterDeath" + 1);
+            AnalyticsResult analyticsResult1 = Analytics.CustomEvent(
+                "Monster",
+                 new Dictionary<string, object>{
+                     {"Monster", 1},
+                     {"test", 2}
+                 }
+                 );
+            Debug.Log("analyticsResult:" + analyticsResult);
+            Debug.Log("analyticsResult:" + analyticsResult1);
         }
     }
 

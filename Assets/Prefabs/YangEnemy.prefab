@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 7273596599405871566}
   - component: {fileID: 7273596599405871567}
   - component: {fileID: 7273596599405871553}
-  - component: {fileID: 8482677818842079217}
   m_Layer: 0
   m_Name: YangEnemy
   m_TagString: Enemy
@@ -116,36 +115,6 @@ MonoBehaviour:
   EnemyBar: {fileID: 8305214882353587458, guid: e78f4aeb236559b44a41ce1d6c219c0f,
     type: 3}
   isTracked: 0
---- !u!114 &8482677818842079217
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7273596599405871554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -745406591, guid: 220224b43fc464c28bc0e8de8f54a432, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Trigger:
-    m_IsTriggerExpanded: 1
-    m_Type: 0
-    m_LifecycleEvent: 0
-    m_ApplyRules: 0
-    m_Rules:
-      m_Rules: []
-    m_TriggerBool: 0
-    m_InitTime: 5
-    m_RepeatTime: 5
-    m_Repetitions: 0
-    repetitionCount: 0
-  m_EventPayload:
-    m_IsEventExpanded: 1
-    m_StandardEventType: CustomEvent
-    m_Parameters:
-      m_Parameters: []
-    m_Name: YangEnemyKill
 --- !u!1 &7273596599440080714
 GameObject:
   m_ObjectHideFlags: 0
