@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CharacterControll : MonoBehaviour
 {
-  public int maxHealth = 100;
+  public int maxHealth;
   public int maxYin = 100;
   public int maxYang = 100;
   public int initYin = 50;
@@ -37,13 +37,14 @@ public class CharacterControll : MonoBehaviour
   public int storedYang { get { return currentStoredYang; } }
   private Rigidbody rb;
 
-  int currentLevel;
-  public int level { get { return currentLevel; } }
+  //int currentLevel;
+  //public int level { get { return currentLevel; } }
 
-  int currentAttack;
-  public int attack { get { return currentAttack; } }
+  public int attack { get; set; }
 
-  int scalingFactor;
+  public int points { get; set; }
+
+  //int scalingFactor;
 
   public List<GameObject> skills = new List<GameObject>();
 
@@ -63,7 +64,12 @@ public class CharacterControll : MonoBehaviour
   void Start()
   {
     rb = GetComponent<Rigidbody>();
-    currentHealth = maxHealth;
+
+        maxHealth = GlobalStaticVars.playerHP;
+        currentHealth = maxHealth;
+        attack = GlobalStaticVars.playerAttack;
+
+        points = GlobalStaticVars.playerPoints;
 
     currentStoredYin = 0;
     currentStoredYang = 0;
@@ -71,9 +77,8 @@ public class CharacterControll : MonoBehaviour
     currentYin = initYin;
     currentYang = maxYang - initYin;
     
-    currentLevel = 1;
-    currentAttack = 1;
-    scalingFactor = 1;
+    //currentLevel = 1;
+    //scalingFactor = 1;
 
     foreach (GameObject obj in skills)
     {
@@ -84,10 +89,10 @@ public class CharacterControll : MonoBehaviour
     // Update is called once per frame
     void Update()
   {
-    if (currentLevel % 5 == 0)
-    {
-        scalingFactor++;
-    }
+    //if (currentLevel % 5 == 0)
+    //{
+    //    scalingFactor++;
+    //}
 
     if (isDrainingHealth)
     {
@@ -137,19 +142,25 @@ public class CharacterControll : MonoBehaviour
     currentYang = 100 - currentYin;
   }
 
-    public void upgradeAttack()
+    public void upgradeAttack(int amount)
     {
         //currentLevel++;
-        currentAttack = currentLevel * scalingFactor;
-        maxHealth += scalingFactor * 10;
-        currentHealth = maxHealth;
+        attack += amount;
+        //maxHealth += scalingFactor * 10;
+        //currentHealth = maxHealth;
     }
 
-    public void upgradeHP()
+    public void upgradeHP(int amount)
     {
         //currentLevel++;
-        currentAttack = currentLevel * scalingFactor;
-        maxHealth += scalingFactor * 10;
-        currentHealth = maxHealth;
+        //currentAttack = currentLevel * scalingFactor;
+        maxHealth += amount;
+        //currentHealth = maxHealth;
+    }
+
+    public void rewardPoints(int amount)
+    {
+        GlobalStaticVars.playerPoints += amount;
+        points = GlobalStaticVars.playerPoints;
     }
 }

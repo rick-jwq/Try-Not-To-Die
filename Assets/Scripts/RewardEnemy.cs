@@ -2,21 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpecialEnemy : MonoBehaviour
+public class RewardEnemy : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] float movingSpeed = 2f;
 
-    // addon is the addon for players. 
-    public int addon = 0;
+    public int reward = 0;
     public List<int> arrayOfInts;
 
     private CharacterControll cc;
+
+    public GameObject EnemyBar;
+    private GameObject canvas;
+    public bool isTracked = false;
+
+    private GameObject barInstance;
     void Start()
     {
         arrayOfInts = new List<int>();
         cc = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterControll>();
         GenerateMoves();
+
+
+        canvas = GameObject.FindGameObjectWithTag("Canvas");
+        barInstance = Instantiate(EnemyBar, new Vector3(1000, 1000, 1000), Quaternion.identity);
+        barInstance.transform.SetParent(canvas.transform, false);
+        barInstance.GetComponent<RewardEnemyBar>().Track(gameObject);
+        barInstance.GetComponent<RewardEnemyBar>().UpdateArrows();
     }
 
     // Update is called once per frame
@@ -29,7 +41,9 @@ public class SpecialEnemy : MonoBehaviour
     //take tamage
     public void TakeDamage(float attackDamage)
     {
-
+        arrayOfInts.Add(Random.Range(1, 5));
+        barInstance.GetComponent<RewardEnemyBar>().UpdateArrows();
+        reward += 1;
     }
 
 
@@ -38,21 +52,35 @@ public class SpecialEnemy : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             DestroySelf();
+            cc.rewardPoints(reward);
+            EnemyGeneration.instance.isGenerating = true;
         }
     }
 
     public void DestroySelf()
     {
         Destroy(gameObject);
-        //This is the place we add 
+        Destroy(barInstance.gameObject);
     }
 
     private void GenerateMoves()
     {
 
-        for (int i = 0; i < 300; i++)
+        for (int i = 0; i < 3; i++)
         {
             arrayOfInts.Add(Random.Range(1, 5));
         }
     }
+
+    public float getHP()
+    {
+        return 99999;
+    }
+
+
+    public float getHPpercent()
+    {
+        return 1;
+    }
+
 }

@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class EnemyHPBar : MonoBehaviour
+public class RewardEnemyBar : MonoBehaviour
 {
     // Start is called before the first frame update
 
@@ -15,13 +14,8 @@ public class EnemyHPBar : MonoBehaviour
 
     private GameObject targetEnemy;
 
-    private RectTransform HPValueBar;
-
-    private Enemy enemyScript;
-
     private void Start()
     {
-        HPValueBar = GetComponentsInChildren<RectTransform>()[1];
     }
 
     // Update is called once per frame
@@ -29,13 +23,8 @@ public class EnemyHPBar : MonoBehaviour
     {
         if (targetEnemy)
         {
-            enemyScript = targetEnemy.GetComponent<Enemy>();
             Vector3 headPosition = Camera.main.WorldToScreenPoint(targetEnemy.transform.GetChild(0).position);
             transform.position = headPosition;
-
-            HPValueBar.sizeDelta = new Vector2(enemyScript.getHPpercent() * 200, 40);
-
-            GetComponentsInChildren<Text>()[0].text = enemyScript.hp + "/" + enemyScript.max_hp;
         }
     }
 
@@ -46,14 +35,14 @@ public class EnemyHPBar : MonoBehaviour
 
     public void UpdateArrows()
     {
-        Enemy enemyScript = targetEnemy.GetComponent<Enemy>();
+        RewardEnemy enemyScript = targetEnemy.GetComponent<RewardEnemy>();
         GameObject arrow;
         foreach (Transform child in arrowContainer.transform)
         {
             Destroy(child.gameObject);
         }
         int i;
-        for (i = 0; i < 4; i++)
+        for (i = 0; i < enemyScript.arrayOfInts.Count; i++)
         {
             switch (enemyScript.arrayOfInts[i])
             {

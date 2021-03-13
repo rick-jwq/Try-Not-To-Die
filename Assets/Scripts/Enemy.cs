@@ -10,7 +10,8 @@ public class Enemy : MonoBehaviour
     public bool isYin = false;
 
     //one move kills one hp
-    public float hp = 4f;
+    public float max_hp { get; set; }
+    public float hp { get; set; } = 4f;
 
     //array contains all the attack moves player have to make
     public List<int> arrayOfInts;
@@ -59,6 +60,8 @@ public class Enemy : MonoBehaviour
         if (hp <= 0f) {
             cc.ChangeYinYang(isYin,3);
             DestroySelf();
+            cc.rewardPoints(1);
+
             AnalyticsResult analyticsResult = Analytics.CustomEvent("MonsterDeath" + 1);
             AnalyticsResult analyticsResult1 = Analytics.CustomEvent(
                 "Monster",
@@ -80,7 +83,7 @@ public class Enemy : MonoBehaviour
     private void GenerateMoves()
     {
 
-        for (int i = 0; i < hp; i++)
+        for (int i = 0; i < 4; i++)
         {
             arrayOfInts.Add(Random.Range(1, 5));
         }
@@ -91,9 +94,15 @@ public class Enemy : MonoBehaviour
         return hp;
     }
 
+    public float getHPpercent()
+    {
+        return hp / max_hp;
+    }
+
     public void setHP(float newHp)
     {
-        hp = newHp;
+        max_hp = newHp;
+        hp = max_hp;
     }
 
     public float getMS()

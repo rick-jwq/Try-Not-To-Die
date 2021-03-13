@@ -5,7 +5,6 @@ using UnityEngine;
 public class ButtonStill2Control : MonoBehaviour
 {
     public CharacterControll cc;
-    public Attack attack;
     private int YinConsume=0;
     private int YangConsume=3;
 
@@ -28,14 +27,14 @@ public class ButtonStill2Control : MonoBehaviour
             effectTimer -= Time.deltaTime;
 
             //Effect
-            attack.attackDamage = 99f;
+            cc.upgradeAttack(99);
 
             if (effectTimer <= 0)
             {
                 effectTimer = 5f;
                 isInEffect = false;
 
-                attack.attackDamage = 1f;
+                cc.upgradeAttack(-99);
             }
         }
     }

@@ -7,10 +7,11 @@ public class EnemyGeneration : MonoBehaviour
     public CharacterControll cc;
     public GameObject YinEnemy;
     public GameObject YangEnemy;
+    public GameObject RewardEnemy;
 
     public float diffChangeTime = 30f;
-    public float startHP = 3f;
-    public float startMS = 2f;
+    public float startHP;
+    public float startMS;
     public float startSpawnTime = 3f;
     public float HPincrement = 1f;
     public float MSincrement = 1f;
@@ -23,37 +24,49 @@ public class EnemyGeneration : MonoBehaviour
     private float curHP;
     private float curMS;
     private float curSpawnTime;
+
+    public static EnemyGeneration instance;
+
+    public int enemysGenerated { get; set; } = 0;
+
+    public bool isGenerating { get; set; }
     // Start is called before the first frame update
     void Start()
     {
+        startHP = GlobalStaticVars.enemyHP;
+        startMS = GlobalStaticVars.enemyMS;
         curHP = startHP;
         curMS = startMS;
         curSpawnTime = startSpawnTime;
 
         yinSpawnChance = cc.yin;
+
+        isGenerating = true;
+
+        instance = this;
     }
 
     private void Update()
     {
         timer += Time.deltaTime;
-        if(timer >= diffChangeTime)
-        {
-            timer = 0f;
+        //if(timer >= diffChangeTime)
+        //{
+        //    timer = 0f;
 
-            if(curHP < 5f)
-            {
-                curHP += HPincrement;
-            }
-            if(curMS < 5f)
-            {
-                curMS += MSincrement;
-            }
-            if(curSpawnTime > 1f)
-            {
-                curSpawnTime -= spawnTimeDecrement;
-            }
-            yinSpawnChance = cc.yin;
-        }
+        //    if(curHP < 5f)
+        //    {
+        //        curHP += HPincrement;
+        //    }
+        //    if(curMS < 5f)
+        //    {
+        //        curMS += MSincrement;
+        //    }
+        //    if(curSpawnTime > 1f)
+        //    {
+        //        curSpawnTime -= spawnTimeDecrement;
+        //    }
+        //    yinSpawnChance = cc.yin;
+        //}
 
         spawnTimer += Time.deltaTime;
         if(spawnTimer >= curSpawnTime)
@@ -65,6 +78,17 @@ public class EnemyGeneration : MonoBehaviour
 
     void EnemyCreate()
     {
+        if (!isGenerating || enemysGenerated >= 50) return;
+
+        enemysGenerated++;
+
+        if (Random.Range(0f, 1f) < 0.05f)
+        {
+            GameObject enemy = Instantiate(RewardEnemy, new Vector3(25, 1, 5), Quaternion.identity);
+            isGenerating = false;
+            return;
+        }
+
         if (Random.Range(0f, 100f) < yinSpawnChance)
         {
             GameObject enemy = Instantiate(YinEnemy, new Vector3(25, 1, 5), Quaternion.identity);

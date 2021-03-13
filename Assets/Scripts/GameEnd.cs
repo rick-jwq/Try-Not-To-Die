@@ -15,4 +15,9 @@ public class GameEnd : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void BackToHome()
+    {
+        SceneManager.LoadScene(0);
+    }
 }
