@@ -10,4 +10,8 @@ public static class GlobalStaticVars
     public static int playerAttack { get; set; } = 1;
     public static int playerPoints { get; set; } = 0;
     public static bool hasViewedTutorial { get; set; } = false;
+    public static int level { get; set; } = 1;
+    public static bool GameStart { get; set; } = true;
+
+    public static float LevelTime { get; set; } = 0;
 }

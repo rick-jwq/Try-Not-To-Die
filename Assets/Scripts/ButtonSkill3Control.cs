@@ -14,6 +14,7 @@ public class ButtonSkill3Control : MonoBehaviour
         {
             cc.ChangeStoredYin(-YinConsume);
             cc.ChangeStoredYang(-YangConsume);
+            cc.usedSkill3 += 1;
 
             GameObject[] enemys = GameObject.FindGameObjectsWithTag("Enemy");
 

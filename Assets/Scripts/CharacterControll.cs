@@ -10,7 +10,19 @@ public class CharacterControll : MonoBehaviour
   public int maxYang = 100;
   public int initYin = 50;
 
+  public int killedYin = 0;
+  public int killedYang = 0;
+  public int damageYin = 0;
+  public int damageYang = 0;
   public float losingSpeed = -0.3f;
+  public int attackTotal = 0;
+  public int attackCorrect = 0;
+  public int usedYin = 0;
+  public int usedYang = 0;
+  public int usedSkill1 = 0;
+  public int usedSkill2 = 0;
+  public int usedSkill3 = 0;
+
 
     public Text YinText;
     public Text YangText;
@@ -39,6 +51,7 @@ public class CharacterControll : MonoBehaviour
 
   //int currentLevel;
   //public int level { get { return currentLevel; } }
+  
 
   public int attack { get; set; }
 
@@ -93,7 +106,7 @@ public class CharacterControll : MonoBehaviour
     //{
     //    scalingFactor++;
     //}
-
+    GlobalStaticVars.LevelTime += Time.deltaTime;
     if (isDrainingHealth)
     {
       time -= Time.deltaTime;
@@ -109,8 +122,7 @@ public class CharacterControll : MonoBehaviour
   {
     if (currentHealth + amount <= 0)
     {
-     Time.timeScale = 0;
-     GameEndScreen.SetActive(true);
+     GameState.instance.Lose();
     }
     currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
   }

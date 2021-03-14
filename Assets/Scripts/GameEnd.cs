@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameEnd : MonoBehaviour
 {
+    public GameState gg;
     public void TryAgain()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -18,6 +19,7 @@ public class GameEnd : MonoBehaviour
 
     public void BackToHome()
     {
-        SceneManager.LoadScene(0);
+        gg.analysis(2);
+        SceneManager.LoadScene(0);        
     }
 }

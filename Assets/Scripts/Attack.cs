@@ -14,6 +14,7 @@ public class Attack : MonoBehaviour
     public CharacterControll cc;
     void Update()
     {
+        if (GlobalStaticVars.GameStart){
         //Enemyarry is an array with all exsiting enemy on map.
         Enemyarry = GameObject.FindGameObjectsWithTag("Enemy"); 
 
@@ -43,10 +44,11 @@ public class Attack : MonoBehaviour
         }
         else
         {
-            if(EnemyGeneration.instance.enemysGenerated >= 50 && cc.currentHealth > 0)
+            if(EnemyGeneration.instance.enemysGenerated >= 12 && cc.currentHealth > 0)
             {
                 GameState.instance.Win();
             }
+        }
         }
 
     }
@@ -58,13 +60,20 @@ public class Attack : MonoBehaviour
         {
             target.arrayOfInts.RemoveAt(0);
             target.TakeDamage(cc.attack);
+            cc.attackTotal += 1;
+            cc.attackCorrect += 1;
         }
         else if (rewardTarget && (rewardTarget.arrayOfInts.Count > 0) && (rewardTarget.arrayOfInts[0] == 1))
         {
             rewardTarget.arrayOfInts.RemoveAt(0);
             rewardTarget.TakeDamage(cc.attack);
+            cc.attackTotal += 1;
+            cc.attackCorrect += 1;
         }
-
+        else
+        {
+            cc.attackTotal += 1;
+        }
     }
     void attackDown()
     {
@@ -72,11 +81,19 @@ public class Attack : MonoBehaviour
         {
             target.arrayOfInts.RemoveAt(0);
             target.TakeDamage(cc.attack);
+            cc.attackTotal += 1;
+            cc.attackCorrect += 1;
         }
         else if (rewardTarget && (rewardTarget.arrayOfInts.Count > 0) && (rewardTarget.arrayOfInts[0] == 2))
         {
             rewardTarget.arrayOfInts.RemoveAt(0);
             rewardTarget.TakeDamage(cc.attack);
+            cc.attackTotal += 1;
+            cc.attackCorrect += 1;
+        }
+        else
+        {
+            cc.attackTotal += 1;
         }
     }
     void attackRight()
@@ -85,11 +102,19 @@ public class Attack : MonoBehaviour
         {
             target.arrayOfInts.RemoveAt(0);
             target.TakeDamage(cc.attack);
+            cc.attackTotal += 1;
+            cc.attackCorrect += 1;
         }
         else if (rewardTarget && (rewardTarget.arrayOfInts.Count > 0) && (rewardTarget.arrayOfInts[0] == 3))
         {
             rewardTarget.arrayOfInts.RemoveAt(0);
             rewardTarget.TakeDamage(cc.attack);
+            cc.attackTotal += 1;
+            cc.attackCorrect += 1;
+        }
+        else
+        {
+            cc.attackTotal += 1;
         }
     }
 
@@ -99,11 +124,19 @@ public class Attack : MonoBehaviour
         {
             target.arrayOfInts.RemoveAt(0);
             target.TakeDamage(cc.attack);
+            cc.attackTotal += 1;
+            cc.attackCorrect += 1;
         }
         else if (rewardTarget && (rewardTarget.arrayOfInts.Count > 0) && (rewardTarget.arrayOfInts[0] == 4))
         {
             rewardTarget.arrayOfInts.RemoveAt(0);
             rewardTarget.TakeDamage(cc.attack);
+            cc.attackTotal += 1;
+            cc.attackCorrect += 1;
+        }
+        else
+        {
+            cc.attackTotal += 1;
         }
     }
 

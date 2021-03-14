@@ -1848,7 +1848,20 @@ MonoBehaviour:
   maxYin: 100
   maxYang: 100
   initYin: 50
+  killedYin: 0
+  killedYang: 0
+  damageYin: 0
+  damageYang: 0
   losingSpeed: -0.3
+  attackTotal: 0
+  attackCorrect: 0
+  usedYin: 0
+  usedYang: 0
+  usedSkill1: 0
+  usedSkill2: 0
+  usedSkill3: 0
+  GameTime: 0
+  UnbalencedTime: 0
   YinText: {fileID: 725363726}
   YangText: {fileID: 756282400}
   UnbalanceText: {fileID: 928940435}
@@ -5656,6 +5669,7 @@ MonoBehaviour:
   HPincrement: 1
   MSincrement: 1
   spawnTimeDecrement: 0.7
+  GameState: {fileID: 1525901967}
 --- !u!114 &1525901971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5668,6 +5682,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4adf1698f5f2cd1489c8371d024b8729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameStart: 1
   target: {fileID: 0}
   rewardTarget: {fileID: 0}
   Enemyarry: []
@@ -5684,8 +5699,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21653e5b836f26e4690c8a30cf5831ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cc: {fileID: 555156996}
+  aa: {fileID: 1525901971}
   Tutorial: {fileID: 624248221}
   GameWinScreen: {fileID: 932399063}
+  GameEndScreen: {fileID: 2071025457}
 --- !u!1001 &1565827535
 PrefabInstance:
   m_ObjectHideFlags: 0

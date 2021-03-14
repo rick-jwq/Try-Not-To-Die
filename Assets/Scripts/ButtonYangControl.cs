@@ -25,6 +25,7 @@ public class ButtonYangControl : MonoBehaviour
         {
             cc.ChangeYinYang(false,3);
             cc.ChangeStoredYang(-1);
+            cc.usedYang +=1;
         }
     }
 }

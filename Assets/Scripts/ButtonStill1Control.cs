@@ -22,6 +22,7 @@ public class ButtonStill1Control : MonoBehaviour
             cc.ChangeStoredYin(-YinConsume);
             cc.ChangeStoredYang(-YangConsume);
             isSlowing = true;
+            cc.usedSkill1 += 1;
         }
     }
 

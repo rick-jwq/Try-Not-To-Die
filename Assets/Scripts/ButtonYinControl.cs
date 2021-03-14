@@ -25,6 +25,7 @@ public class ButtonYinControl : MonoBehaviour
         {
             cc.ChangeYinYang(true, 3);
             cc.ChangeStoredYin(-1);
+            cc.usedYin +=1;
         }
     }
 }

@@ -28,7 +28,6 @@ public class Enemy : MonoBehaviour
 
     private GameObject barInstance;
 
-    private AnalyticsEventTracker et;
 
     void Start()
     {
@@ -61,17 +60,11 @@ public class Enemy : MonoBehaviour
             cc.ChangeYinYang(isYin,3);
             DestroySelf();
             cc.rewardPoints(1);
+            if (isYin == false)
+            {cc.killedYang+=1;}
+            else
+            {cc.killedYin+=1;}
 
-            AnalyticsResult analyticsResult = Analytics.CustomEvent("MonsterDeath" + 1);
-            AnalyticsResult analyticsResult1 = Analytics.CustomEvent(
-                "Monster",
-                 new Dictionary<string, object>{
-                     {"Monster", 1},
-                     {"test", 2}
-                 }
-                 );
-            Debug.Log("analyticsResult:" + analyticsResult);
-            Debug.Log("analyticsResult:" + analyticsResult1);
         }
     }
 
@@ -120,6 +113,10 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             cc.ChangeHealth(-10);
+            if (isYin == false)
+            {cc.damageYang+=1;}
+            else
+            {cc.damageYin+=1;}
             DestroySelf();
         }
     }

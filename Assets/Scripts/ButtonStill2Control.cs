@@ -17,6 +17,7 @@ public class ButtonStill2Control : MonoBehaviour
             cc.ChangeStoredYin(-YinConsume);
             cc.ChangeStoredYang(-YangConsume);
             isInEffect = true;
+            cc.usedSkill2 += 1;
         }
     }
 

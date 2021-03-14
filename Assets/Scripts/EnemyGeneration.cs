@@ -30,6 +30,9 @@ public class EnemyGeneration : MonoBehaviour
     public int enemysGenerated { get; set; } = 0;
 
     public bool isGenerating { get; set; }
+
+    public GameObject GameState;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -78,7 +81,11 @@ public class EnemyGeneration : MonoBehaviour
 
     void EnemyCreate()
     {
-        if (!isGenerating || enemysGenerated >= 50) return;
+        if (!isGenerating || enemysGenerated >= 12) 
+        {
+            
+            return;
+        }
 
         enemysGenerated++;
 
