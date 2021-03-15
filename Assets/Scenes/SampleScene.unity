@@ -1860,8 +1860,6 @@ MonoBehaviour:
   usedSkill1: 0
   usedSkill2: 0
   usedSkill3: 0
-  GameTime: 0
-  UnbalencedTime: 0
   YinText: {fileID: 725363726}
   YangText: {fileID: 756282400}
   UnbalanceText: {fileID: 928940435}
@@ -3536,6 +3534,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b39d8cc8531d77446b1cafc5e6e2b30c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gg: {fileID: 1525901972}
 --- !u!114 &932399066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4708,6 +4707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b39d8cc8531d77446b1cafc5e6e2b30c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gg: {fileID: 1525901972}
 --- !u!114 &1261703096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5682,7 +5682,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4adf1698f5f2cd1489c8371d024b8729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameStart: 1
   target: {fileID: 0}
   rewardTarget: {fileID: 0}
   Enemyarry: []
@@ -5700,7 +5699,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cc: {fileID: 555156996}
-  aa: {fileID: 1525901971}
   Tutorial: {fileID: 624248221}
   GameWinScreen: {fileID: 932399063}
   GameEndScreen: {fileID: 2071025457}
@@ -6508,6 +6506,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b39d8cc8531d77446b1cafc5e6e2b30c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gg: {fileID: 1525901972}
 --- !u!114 &2071025459
 MonoBehaviour:
   m_ObjectHideFlags: 0
