@@ -13,6 +13,8 @@ public class GameState : MonoBehaviour
     public GameObject GameWinScreen;
     public GameObject GameEndScreen;
 
+    private bool inTutorial = false;
+
     private void Start()
     {
         instance = this;
@@ -31,6 +33,7 @@ public class GameState : MonoBehaviour
             {
                 Time.timeScale = 0;
                 Tutorial.SetActive(true);
+                inTutorial = true;
                 GlobalStaticVars.hasViewedTutorial = true;
             }
             else
@@ -48,6 +51,20 @@ public class GameState : MonoBehaviour
     public void ResumeGame()
     {
         Time.timeScale = 1;
+    }
+
+    public void FinishTutorial()
+    {
+        Time.timeScale = 1;
+        inTutorial = false;
+    }
+
+    private void Update()
+    {
+        if(inTutorial)
+        {
+            GlobalStaticVars.tutorialTime += Time.unscaledDeltaTime;
+        }
     }
 
     public void analysis(int state)
@@ -80,6 +97,7 @@ public class GameState : MonoBehaviour
         Debug.Log("usedYang:" + cc.usedYang);
 
         Debug.Log("LevelTime:" + GlobalStaticVars.LevelTime);
+        Debug.Log("TutorialTime:" + GlobalStaticVars.tutorialTime);
 
         Debug.Log("usedSkill1:" + cc.usedSkill1);
         Debug.Log("usedSkill2:" + cc.usedSkill2);
@@ -143,7 +161,8 @@ public class GameState : MonoBehaviour
                         {"usedSkill1", cc.usedSkill1},
                         {"usedSkill2", cc.usedSkill2},
                         {"usedSkill3", cc.usedSkill3}, 
-                        {"LevelTime", GlobalStaticVars.LevelTime}, 
+                        {"LevelTime", GlobalStaticVars.LevelTime},
+                        {"tutorialTime", GlobalStaticVars.tutorialTime},
                     }
                     );
             Debug.Log("analyticsResult2:" + level1);
@@ -159,7 +178,8 @@ public class GameState : MonoBehaviour
                         {"usedSkill1", cc.usedSkill1},
                         {"usedSkill2", cc.usedSkill2},
                         {"usedSkill3", cc.usedSkill3}, 
-                        {"LevelTime", GlobalStaticVars.LevelTime}, 
+                        {"LevelTime", GlobalStaticVars.LevelTime},
+                        {"tutorialTime", GlobalStaticVars.tutorialTime},
                     }
                     );
             Debug.Log("analyticsResult2:" + level2);
@@ -175,7 +195,8 @@ public class GameState : MonoBehaviour
                         {"usedSkill1", cc.usedSkill1},
                         {"usedSkill2", cc.usedSkill2},
                         {"usedSkill3", cc.usedSkill3}, 
-                        {"LevelTime", GlobalStaticVars.LevelTime}, 
+                        {"LevelTime", GlobalStaticVars.LevelTime},
+                        {"tutorialTime", GlobalStaticVars.tutorialTime},
                     }
                     );
             Debug.Log("analyticsResult2:" + level3);

@@ -18,4 +18,5 @@ public static class GlobalStaticVars
     public static bool GameStart { get; set; } = true;
 
     public static float LevelTime { get; set; } = 0;
+    public static float tutorialTime { get; set; } = 0;
 }
