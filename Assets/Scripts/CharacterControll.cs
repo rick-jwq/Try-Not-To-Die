@@ -124,13 +124,17 @@ public class CharacterControll : MonoBehaviour
         progressBar.GetComponentsInChildren<Text>()[1].text = (killedYang + killedYin).ToString() + " / " + GlobalStaticVars.enemyNumber;
         progressBar.GetComponentsInChildren<RectTransform>()[1].sizeDelta = new Vector2((killedYang + killedYin) * 600 / GlobalStaticVars.enemyNumber,40);
 
+    }
+
+    private void FixedUpdate()
+    {
         if (killedYang + killedYin >= GlobalStaticVars.enemyNumber && currentHealth > 0)
         {
             GameState.instance.Win();
         }
     }
 
-  public void ChangeHealth(float amount)
+    public void ChangeHealth(float amount)
   {
     if (currentHealth + amount <= 0)
     {

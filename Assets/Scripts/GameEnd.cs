@@ -17,9 +17,10 @@ public class GameEnd : MonoBehaviour
         Application.Quit();
     }
 
-    public void BackToHome()
+    public void BackToHome(bool sendAnalytics)
     {
-        gg.analysis(2);
+        if(sendAnalytics)
+            gg.analysis(2);
         Time.timeScale = 1;
         SceneManager.LoadScene(0);        
     }
