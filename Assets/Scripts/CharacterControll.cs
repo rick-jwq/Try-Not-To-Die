@@ -24,6 +24,7 @@ public class CharacterControll : MonoBehaviour
   public int usedSkill3 = 0;
   public int usedSkill4 = 0;
   public int usedSkill5 = 0;
+  public int usedSkill6 = 0;
 
     public GameObject SkillContainer;
 
