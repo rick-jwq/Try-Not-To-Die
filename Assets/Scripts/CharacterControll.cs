@@ -24,6 +24,7 @@ public class CharacterControll : MonoBehaviour
   public int usedSkill3 = 0;
 
     public GameObject SkillContainer;
+    public GameObject progressBar;
 
 
     public Text YinText;
@@ -119,7 +120,15 @@ public class CharacterControll : MonoBehaviour
         ChangeHealth(losingSpeed);
       }
     }
-  }
+
+        progressBar.GetComponentsInChildren<Text>()[1].text = (killedYang + killedYin).ToString() + " / " + GlobalStaticVars.enemyNumber;
+        progressBar.GetComponentsInChildren<RectTransform>()[1].sizeDelta = new Vector2((killedYang + killedYin) * 600 / GlobalStaticVars.enemyNumber,40);
+
+        if (killedYang + killedYin >= GlobalStaticVars.enemyNumber && currentHealth > 0)
+        {
+            GameState.instance.Win();
+        }
+    }
 
   public void ChangeHealth(float amount)
   {

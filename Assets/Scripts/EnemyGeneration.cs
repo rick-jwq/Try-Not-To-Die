@@ -87,8 +87,6 @@ public class EnemyGeneration : MonoBehaviour
             return;
         }
 
-        enemysGenerated++;
-
         if (Random.Range(0f, 1f) < 0.05f)
         {
             GameObject enemy = Instantiate(RewardEnemy, new Vector3(25, 1, 5), Quaternion.identity);
@@ -101,12 +99,14 @@ public class EnemyGeneration : MonoBehaviour
             GameObject enemy = Instantiate(YinEnemy, new Vector3(25, 1, 5), Quaternion.identity);
             enemy.GetComponent<Enemy>().setHP(curHP);
             enemy.GetComponent<Enemy>().setMS(curMS);
+            enemysGenerated++;
         }
         else
         {
             GameObject enemy = Instantiate(YangEnemy, new Vector3(25, 1, 5), Quaternion.identity);
             enemy.GetComponent<Enemy>().setHP(curHP);
             enemy.GetComponent<Enemy>().setMS(curMS);
+            enemysGenerated++;
         }
     }
 

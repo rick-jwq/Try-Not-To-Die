@@ -15,6 +15,7 @@ public class LevelLoader : MonoBehaviour
             GlobalStaticVars.level = 1;
             GlobalStaticVars.enemyHP = 3f;
             GlobalStaticVars.enemyMS = 2f;
+            GlobalStaticVars.enemyNumber = 10;
             GlobalStaticVars.LevelTime = 0;
             GlobalStaticVars.GameStart = true;
             SceneManager.LoadScene(1);       
@@ -24,6 +25,7 @@ public class LevelLoader : MonoBehaviour
             GlobalStaticVars.level = 2;
             GlobalStaticVars.enemyHP = 5f;
             GlobalStaticVars.enemyMS = 2.5f;
+            GlobalStaticVars.enemyNumber = 20;
             GlobalStaticVars.LevelTime = 0;
             GlobalStaticVars.GameStart = true;
             SceneManager.LoadScene(1);
@@ -33,6 +35,7 @@ public class LevelLoader : MonoBehaviour
             GlobalStaticVars.level = 3;
             GlobalStaticVars.enemyHP = 10f;
             GlobalStaticVars.enemyMS = 3f;
+            GlobalStaticVars.enemyNumber = 30;
             GlobalStaticVars.LevelTime = 0;
             GlobalStaticVars.GameStart = true;
             SceneManager.LoadScene(1);

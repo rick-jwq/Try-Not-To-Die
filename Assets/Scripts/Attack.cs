@@ -42,13 +42,6 @@ public class Attack : MonoBehaviour
                 attackLeft();
             }
         }
-        else
-        {
-            if(EnemyGeneration.instance.enemysGenerated >= 12 && cc.currentHealth > 0)
-            {
-                GameState.instance.Win();
-            }
-        }
         }
 
     }

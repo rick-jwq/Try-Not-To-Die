@@ -57,7 +57,7 @@ public class Enemy : MonoBehaviour
         barInstance.GetComponent<EnemyHPBar>().UpdateArrows();
 
         if (hp <= 0f) {
-            cc.ChangeYinYang(isYin,3);
+            cc.ChangeYinYang(isYin,10);
             DestroySelf();
             cc.rewardPoints(1);
             if (isYin == false)
