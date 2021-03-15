@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonSkill3Control : MonoBehaviour
+public class Skill_killall : Skill
 {
-    public CharacterControll cc;
-    private int YinConsume = 3;
-    private int YangConsume = 3;
-
-    public void UseSkill3()
+    private CharacterControll cc;
+    private void Start()
     {
-        if (cc.storedYin >= YinConsume && cc.storedYang >= YangConsume)
+        cc = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterControll>();
+    }
+    public override void Cast()
+    {
+        if (cc.storedYin >= Yincost && cc.storedYang >= Yangcost)
         {
-            cc.ChangeStoredYin(-YinConsume);
-            cc.ChangeStoredYang(-YangConsume);
+            cc.ChangeStoredYin(-Yincost);
+            cc.ChangeStoredYang(-Yangcost);
             cc.usedSkill3 += 1;
 
             GameObject[] enemys = GameObject.FindGameObjectsWithTag("Enemy");

@@ -23,6 +23,8 @@ public class CharacterControll : MonoBehaviour
   public int usedSkill2 = 0;
   public int usedSkill3 = 0;
 
+    public GameObject SkillContainer;
+
 
     public Text YinText;
     public Text YangText;
@@ -59,8 +61,6 @@ public class CharacterControll : MonoBehaviour
 
   //int scalingFactor;
 
-  public List<GameObject> skills = new List<GameObject>();
-
     public void ChangeStoredYin(int amount)
   {
     currentStoredYin = currentStoredYin + amount;
@@ -89,13 +89,16 @@ public class CharacterControll : MonoBehaviour
 
     currentYin = initYin;
     currentYang = maxYang - initYin;
-    
-    //currentLevel = 1;
-    //scalingFactor = 1;
 
-    foreach (GameObject obj in skills)
+        //currentLevel = 1;
+        //scalingFactor = 1;
+
+    foreach (GameObject skill in GlobalStaticVars.skills)
     {
-        obj.SetActive(true);
+            GameObject skillInstance = Instantiate(skill);
+
+            skillInstance.transform.SetParent(SkillContainer.transform);
+            
     }
   }
 

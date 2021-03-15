@@ -2,25 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonStill1Control : MonoBehaviour
+public class Skill_slow : Skill
 {
-    public CharacterControll cc;
-    public EnemyGeneration eg;
+    private CharacterControll cc;
+    private EnemyGeneration eg;
 
-    private int YinConsume=3;
-    private int YangConsume=0;
     private float slowspeed=1f;
 
 
     public GameObject[] enemys;
     private float slowTimer = 5f;
     private bool isSlowing = false;
-    public void UseStill1()
+
+    private void Start()
     {
-        if (cc.storedYin>=YinConsume && cc.storedYang>=YangConsume)
+        cc = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterControll>();
+        eg = GameObject.FindGameObjectWithTag("GlobalControl").GetComponent<EnemyGeneration>();
+    }
+    public override void Cast()
+    {
+        if (cc.storedYin>=Yincost && cc.storedYang>=Yangcost)
         {
-            cc.ChangeStoredYin(-YinConsume);
-            cc.ChangeStoredYang(-YangConsume);
+            cc.ChangeStoredYin(-Yincost);
+            cc.ChangeStoredYang(-Yangcost);
             isSlowing = true;
             cc.usedSkill1 += 1;
         }
@@ -38,7 +42,12 @@ public class ButtonStill1Control : MonoBehaviour
             int i;
             for(i = 0; i < enemys.Length; i++)
             {
-                enemys[i].GetComponent<Enemy>().movingSpeed = slowspeed;
+                Enemy enemyScript = enemys[i].GetComponent<Enemy>();
+                if(enemyScript)
+                {
+                    enemyScript.movingSpeed = slowspeed;
+                }
+
             }
 
             if(slowTimer <= 0)

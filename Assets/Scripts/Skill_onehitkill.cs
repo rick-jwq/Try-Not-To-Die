@@ -2,20 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonStill2Control : MonoBehaviour
+public class Skill_onehitkill : Skill
 {
-    public CharacterControll cc;
-    private int YinConsume=0;
-    private int YangConsume=3;
+    private CharacterControll cc;
 
     private bool isInEffect = false;
     private float effectTimer = 5f;
-    public void UseStill2()
+
+    private void Start()
     {
-        if (cc.storedYin >= YinConsume && cc.storedYang >= YangConsume)
+        cc = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterControll>();
+    }
+    public override void Cast()
+    {
+        if (cc.storedYin >= Yincost && cc.storedYang >= Yangcost)
         {
-            cc.ChangeStoredYin(-YinConsume);
-            cc.ChangeStoredYang(-YangConsume);
+            cc.ChangeStoredYin(-Yincost);
+            cc.ChangeStoredYang(-Yangcost);
             isInEffect = true;
             cc.usedSkill2 += 1;
         }
