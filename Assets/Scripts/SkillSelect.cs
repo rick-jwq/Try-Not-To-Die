@@ -12,12 +12,17 @@ public class SkillSelect : MonoBehaviour
         if(skillStored)
         {
             GlobalStaticVars.skills.Remove(skill);
+            updateContainer();
         }
-        else
+        else if(GlobalStaticVars.skills.Count < 2)
         {
             GlobalStaticVars.skills.Add(skill);
+            updateContainer();
         }
+    }
 
+    private void updateContainer()
+    {
         foreach (Transform t in container.transform)
         {
             Destroy(t.gameObject);

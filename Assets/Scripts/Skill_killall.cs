@@ -1,13 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Skill_killall : Skill
 {
     private CharacterControll cc;
     private void Start()
     {
-        cc = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterControll>();
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            cc = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterControll>();
+        }
     }
     public override void Cast()
     {

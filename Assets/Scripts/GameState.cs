@@ -25,11 +25,18 @@ public class GameState : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if( scene.buildIndex == 1 && !GlobalStaticVars.hasViewedTutorial)
+        if( scene.buildIndex == 1)
         {
-            Time.timeScale = 0;
-            Tutorial.SetActive(true);
-            GlobalStaticVars.hasViewedTutorial = true;
+            if(!GlobalStaticVars.hasViewedTutorial)
+            {
+                Time.timeScale = 0;
+                Tutorial.SetActive(true);
+                GlobalStaticVars.hasViewedTutorial = true;
+            }
+            else
+            {
+                Time.timeScale = 1;
+            }
         }
     }
 

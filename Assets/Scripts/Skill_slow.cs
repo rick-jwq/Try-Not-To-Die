@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Skill_slow : Skill
 {
@@ -16,8 +17,11 @@ public class Skill_slow : Skill
 
     private void Start()
     {
-        cc = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterControll>();
-        eg = GameObject.FindGameObjectWithTag("GlobalControl").GetComponent<EnemyGeneration>();
+        if(SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            cc = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterControll>();
+            eg = GameObject.FindGameObjectWithTag("GlobalControl").GetComponent<EnemyGeneration>();
+        }
     }
     public override void Cast()
     {

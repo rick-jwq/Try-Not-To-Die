@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Skill_onehitkill : Skill
 {
@@ -11,7 +12,10 @@ public class Skill_onehitkill : Skill
 
     private void Start()
     {
-        cc = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterControll>();
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            cc = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterControll>();
+        }
     }
     public override void Cast()
     {

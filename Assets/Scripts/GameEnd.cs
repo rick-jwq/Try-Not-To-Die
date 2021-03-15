@@ -20,6 +20,7 @@ public class GameEnd : MonoBehaviour
     public void BackToHome()
     {
         gg.analysis(2);
+        Time.timeScale = 1;
         SceneManager.LoadScene(0);        
     }
 }
