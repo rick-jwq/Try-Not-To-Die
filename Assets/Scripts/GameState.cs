@@ -54,34 +54,83 @@ public class GameState : MonoBehaviour
                 }
                 );
         Debug.Log("analyticsResult1:" + Attributes);
- 
+        Debug.Log("playerAttack:" + GlobalStaticVars.playerAttack);
+        Debug.Log("playerHP:" + GlobalStaticVars.playerHP);
+        Debug.Log("playerPoints:" + GlobalStaticVars.playerPoints);
 
         Debug.Log("level:" + GlobalStaticVars.level);
+
         Debug.Log("killedYang:" + cc.killedYang);
         Debug.Log("killedYin:" + cc.killedYin);
+
         Debug.Log("damageYang:" + cc.damageYang);
         Debug.Log("damageYin:" + cc.damageYin);
+
         Debug.Log("attackTotal:" + cc.attackTotal);
         Debug.Log("attackCorrect:" + cc.attackCorrect);
+
         Debug.Log("usedYin:" + cc.usedYin);
         Debug.Log("usedYang:" + cc.usedYang);
+
         Debug.Log("LevelTime:" + GlobalStaticVars.LevelTime);
+
         Debug.Log("usedSkill1:" + cc.usedSkill1);
         Debug.Log("usedSkill2:" + cc.usedSkill2);
         Debug.Log("usedSkill3:" + cc.usedSkill3);
 
         if(GlobalStaticVars.level == 1)
         {
-            AnalyticsResult level1 = Analytics.CustomEvent(
-                "level1",
+            AnalyticsResult level1Monster = Analytics.CustomEvent(
+                "level1Monster",
                     new Dictionary<string, object>{
                         {"killedYin", cc.killedYin},
                         {"killedYang", cc.killedYang},
                         {"damageYin", cc.damageYin},
                         {"damageYang", cc.damageYang},
-                        {"isPass", state},
                         {"attackTotal", cc.attackTotal},
                         {"attackCorrect", cc.attackCorrect},
+                    }
+                    );
+            Debug.Log("analyticsResult2:" + level1Monster);
+        }
+        if(GlobalStaticVars.level == 2)
+        {
+            AnalyticsResult level2Monster = Analytics.CustomEvent(
+                "level2Monster",
+                    new Dictionary<string, object>{
+                        {"killedYin", cc.killedYin},
+                        {"killedYang", cc.killedYang},
+                        {"damageYin", cc.damageYin},
+                        {"damageYang", cc.damageYang},
+                        {"attackTotal", cc.attackTotal},
+                        {"attackCorrect", cc.attackCorrect},
+                    }
+                    );
+            Debug.Log("analyticsResult2:" + level2Monster);
+        }
+        if(GlobalStaticVars.level == 3)
+        {
+            AnalyticsResult level3Monster = Analytics.CustomEvent(
+                "level3Monster",
+                    new Dictionary<string, object>{
+                        {"killedYin", cc.killedYin},
+                        {"killedYang", cc.killedYang},
+                        {"damageYin", cc.damageYin},
+                        {"damageYang", cc.damageYang},
+                        {"attackTotal", cc.attackTotal},
+                        {"attackCorrect", cc.attackCorrect},
+                    }
+                    );
+            Debug.Log("analyticsResult2:" + level3Monster);
+        }
+
+
+        if(GlobalStaticVars.level == 1)
+        {
+            AnalyticsResult level1 = Analytics.CustomEvent(
+                "level1",
+                    new Dictionary<string, object>{
+                        {"isPass", state},
                         {"usedYin", cc.usedYin},
                         {"usedYang", cc.usedYang},
                         {"usedSkill1", cc.usedSkill1},
@@ -97,13 +146,7 @@ public class GameState : MonoBehaviour
             AnalyticsResult level2 = Analytics.CustomEvent(
                 "level2",
                     new Dictionary<string, object>{
-                        {"killedYin", cc.killedYin},
-                        {"killedYang", cc.killedYang},
-                        {"damageYin", cc.damageYin},
-                        {"damageYang", cc.damageYang},
                         {"isPass", state},
-                        {"attackTotal", cc.attackTotal},
-                        {"attackCorrect", cc.attackCorrect},
                         {"usedYin", cc.usedYin},
                         {"usedYang", cc.usedYang},
                         {"usedSkill1", cc.usedSkill1},
@@ -119,13 +162,7 @@ public class GameState : MonoBehaviour
             AnalyticsResult level3 = Analytics.CustomEvent(
                 "level3",
                     new Dictionary<string, object>{
-                        {"killedYin", cc.killedYin},
-                        {"killedYang", cc.killedYang},
-                        {"damageYin", cc.damageYin},
-                        {"damageYang", cc.damageYang},
                         {"isPass", state},
-                        {"attackTotal", cc.attackTotal},
-                        {"attackCorrect", cc.attackCorrect},
                         {"usedYin", cc.usedYin},
                         {"usedYang", cc.usedYang},
                         {"usedSkill1", cc.usedSkill1},
