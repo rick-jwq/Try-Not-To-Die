@@ -23,7 +23,7 @@ public class ButtonYangControl : MonoBehaviour
     {
         if (cc.storedYang > 0)
         {
-            cc.ChangeYinYang(false,3);
+            cc.ChangeYinYang(false,10);
             cc.ChangeStoredYang(-1);
             cc.usedYang +=1;
         }

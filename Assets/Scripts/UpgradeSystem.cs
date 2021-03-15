@@ -29,20 +29,20 @@ public class UpgradeSystem : MonoBehaviour
 
     public void upgradeAttack(int amount)
     {
-        if(GlobalStaticVars.playerPoints >= 1)
+        if(GlobalStaticVars.playerPoints >= 10)
         {
             GlobalStaticVars.playerAttack += amount;
-            GlobalStaticVars.playerPoints -= 1;
+            GlobalStaticVars.playerPoints -= 10;
             setText(GlobalStaticVars.playerAttack, GlobalStaticVars.playerHP, GlobalStaticVars.playerPoints);
         }
     }
 
     public void upgradeHP(int amount)
     {
-        if (GlobalStaticVars.playerPoints >= 1)
+        if (GlobalStaticVars.playerPoints >= 10)
         {
             GlobalStaticVars.playerHP += amount;
-            GlobalStaticVars.playerPoints -= 1;
+            GlobalStaticVars.playerPoints -= 10;
             setText(GlobalStaticVars.playerAttack, GlobalStaticVars.playerHP, GlobalStaticVars.playerPoints);
         }
     }

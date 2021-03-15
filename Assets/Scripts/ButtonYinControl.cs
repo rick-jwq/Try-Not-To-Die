@@ -23,7 +23,7 @@ public class ButtonYinControl : MonoBehaviour
     {
         if (cc.storedYin > 0)
         {
-            cc.ChangeYinYang(true, 3);
+            cc.ChangeYinYang(true, 10);
             cc.ChangeStoredYin(-1);
             cc.usedYin +=1;
         }
