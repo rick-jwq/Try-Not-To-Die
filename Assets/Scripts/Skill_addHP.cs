@@ -21,11 +21,8 @@ public class Skill_addHP : Skill
             cc.ChangeStoredYin(-Yincost);
             cc.ChangeStoredYang(-Yangcost);
             cc.usedSkill4 += 1;
-        if (cc.maxHealth-cc.health>=addHPvalue)
-        {
-            cc.ChangeHealth(addHPvalue);
-        }
 
+            cc.ChangeHealth(addHPvalue);
         }
     }
 }

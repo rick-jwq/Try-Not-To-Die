@@ -21,11 +21,8 @@ public class Skill_reBalance : Skill
             cc.ChangeStoredYin(-Yincost);
             cc.ChangeStoredYang(-Yangcost);
             cc.usedSkill5 += 1;
-        if (cc.maxHealth-cc.health>=addHPvalue)
-        {
-            cc.reBalance();
-        }
 
+            cc.reBalance();
         }
     }
 }

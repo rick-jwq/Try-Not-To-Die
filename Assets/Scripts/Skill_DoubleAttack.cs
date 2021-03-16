@@ -9,6 +9,7 @@ public class Skill_DoubleAttack : Skill
 
     private bool isInEffect = false;
     private float effectTimer = 5f;
+    private bool hasUpgraded = false;
 
     private void Start()
     {
@@ -25,6 +26,12 @@ public class Skill_DoubleAttack : Skill
             cc.ChangeStoredYang(-Yangcost);
             isInEffect = true;
             cc.usedSkill6 += 1;
+
+            if (!hasUpgraded)
+            {
+                cc.upgradeAttack(cc.attack);
+                hasUpgraded = true;
+            }
         }
     }
 
@@ -35,14 +42,15 @@ public class Skill_DoubleAttack : Skill
             effectTimer -= Time.deltaTime;
 
             //Effect
-            cc.upgradeAttack(1);
+
 
             if (effectTimer <= 0)
             {
                 effectTimer = 5f;
                 isInEffect = false;
+                hasUpgraded = false;
 
-                cc.upgradeAttack(-1);
+                cc.upgradeAttack(-cc.attack / 2);
             }
         }
     }

@@ -9,6 +9,7 @@ public class Skill_onehitkill : Skill
 
     private bool isInEffect = false;
     private float effectTimer = 5f;
+    private bool hasUpgraded = false;
 
     private void Start()
     {
@@ -24,6 +25,13 @@ public class Skill_onehitkill : Skill
             cc.ChangeStoredYin(-Yincost);
             cc.ChangeStoredYang(-Yangcost);
             isInEffect = true;
+
+            if(!hasUpgraded)
+            {
+                cc.upgradeAttack(999);
+                hasUpgraded = true;
+            }
+
             cc.usedSkill2 += 1;
         }
     }
@@ -35,14 +43,14 @@ public class Skill_onehitkill : Skill
             effectTimer -= Time.deltaTime;
 
             //Effect
-            cc.upgradeAttack(99);
 
             if (effectTimer <= 0)
             {
                 effectTimer = 5f;
                 isInEffect = false;
+                hasUpgraded = false;
 
-                cc.upgradeAttack(-99);
+                cc.upgradeAttack(-999);
             }
         }
     }
