@@ -7,12 +7,11 @@ using UnityEngine.SceneManagement;
 public class LevelLoader : MonoBehaviour
 {
 
-    public void LoadLevel(int level_number)
+    public void LoadLevel()
     {
 
-        if(level_number == 1)
+        if(GlobalStaticVars.level == 1)
         {
-            GlobalStaticVars.level = 1;
             GlobalStaticVars.enemyHP = 3f;
             GlobalStaticVars.enemyMS = 2f;
             GlobalStaticVars.enemyNumber = 10;
@@ -21,9 +20,8 @@ public class LevelLoader : MonoBehaviour
             GlobalStaticVars.GameStart = true;
             SceneManager.LoadScene(1);       
         }
-        if (level_number == 2)
+        if (GlobalStaticVars.level == 2)
         {
-            GlobalStaticVars.level = 2;
             GlobalStaticVars.enemyHP = 5f;
             GlobalStaticVars.enemyMS = 2.5f;
             GlobalStaticVars.enemyNumber = 20;
@@ -32,9 +30,8 @@ public class LevelLoader : MonoBehaviour
             GlobalStaticVars.GameStart = true;
             SceneManager.LoadScene(1);
         }
-        if (level_number == 3)
+        if (GlobalStaticVars.level == 3)
         {
-            GlobalStaticVars.level = 3;
             GlobalStaticVars.enemyHP = 10f;
             GlobalStaticVars.enemyMS = 3f;
             GlobalStaticVars.enemyNumber = 30;
@@ -43,5 +40,10 @@ public class LevelLoader : MonoBehaviour
             GlobalStaticVars.GameStart = true;
             SceneManager.LoadScene(1);
         }
+    }
+
+    public void SetLevel(int level)
+    {
+        GlobalStaticVars.level = level;
     }
 }
