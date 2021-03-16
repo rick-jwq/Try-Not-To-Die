@@ -81,9 +81,8 @@ public class EnemyGeneration : MonoBehaviour
 
     void EnemyCreate()
     {
-        if (!isGenerating || enemysGenerated >= 12) 
+        if (!isGenerating) 
         {
-            
             return;
         }
 
