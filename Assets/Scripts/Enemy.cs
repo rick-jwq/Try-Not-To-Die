@@ -38,6 +38,7 @@ public class Enemy : MonoBehaviour
         canvas = GameObject.FindGameObjectWithTag("Canvas");
         barInstance = Instantiate(EnemyBar, new Vector3(1000,1000,1000), Quaternion.identity);
         barInstance.transform.SetParent(canvas.transform,false);
+        barInstance.transform.SetAsFirstSibling();
         barInstance.GetComponent<EnemyHPBar>().Track(gameObject);
         barInstance.GetComponent<EnemyHPBar>().UpdateArrows();
 

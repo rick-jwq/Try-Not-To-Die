@@ -113,6 +113,8 @@ public class GameState : MonoBehaviour
                     new Dictionary<string, object>{
                         {"killedYin", cc.killedYin},
                         {"killedYang", cc.killedYang},
+                        {"usedYin", cc.usedYin},
+                        {"usedYang", cc.usedYang},
                         {"damageYin", cc.damageYin},
                         {"damageYang", cc.damageYang},
                         {"attackTotal", cc.attackTotal},
@@ -128,6 +130,8 @@ public class GameState : MonoBehaviour
                     new Dictionary<string, object>{
                         {"killedYin", cc.killedYin},
                         {"killedYang", cc.killedYang},
+                        {"usedYin", cc.usedYin},
+                        {"usedYang", cc.usedYang},
                         {"damageYin", cc.damageYin},
                         {"damageYang", cc.damageYang},
                         {"attackTotal", cc.attackTotal},
@@ -143,6 +147,8 @@ public class GameState : MonoBehaviour
                     new Dictionary<string, object>{
                         {"killedYin", cc.killedYin},
                         {"killedYang", cc.killedYang},
+                        {"usedYin", cc.usedYin},
+                        {"usedYang", cc.usedYang},
                         {"damageYin", cc.damageYin},
                         {"damageYang", cc.damageYang},
                         {"attackTotal", cc.attackTotal},
@@ -159,8 +165,6 @@ public class GameState : MonoBehaviour
                 "level1",
                     new Dictionary<string, object>{
                         {"isPass", state},
-                        {"usedYin", cc.usedYin},
-                        {"usedYang", cc.usedYang},
                         {"usedSkill1", cc.usedSkill1},
                         {"usedSkill2", cc.usedSkill2},
                         {"usedSkill3", cc.usedSkill3},
@@ -179,8 +183,6 @@ public class GameState : MonoBehaviour
                 "level2",
                     new Dictionary<string, object>{
                         {"isPass", state},
-                        {"usedYin", cc.usedYin},
-                        {"usedYang", cc.usedYang},
                         {"usedSkill1", cc.usedSkill1},
                         {"usedSkill2", cc.usedSkill2},
                         {"usedSkill3", cc.usedSkill3},
@@ -199,8 +201,6 @@ public class GameState : MonoBehaviour
                 "level3",
                     new Dictionary<string, object>{
                         {"isPass", state},
-                        {"usedYin", cc.usedYin},
-                        {"usedYang", cc.usedYang},
                         {"usedSkill1", cc.usedSkill1},
                         {"usedSkill2", cc.usedSkill2},
                         {"usedSkill3", cc.usedSkill3},
