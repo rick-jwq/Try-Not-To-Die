@@ -22,6 +22,9 @@ public class CharacterControll : MonoBehaviour
   public int usedSkill1 = 0;
   public int usedSkill2 = 0;
   public int usedSkill3 = 0;
+  public int usedSkill4 = 0;
+  public int usedSkill5 = 0;
+  public int usedSkill6 = 0;
 
     public GameObject SkillContainer;
     public GameObject progressBar;
@@ -191,4 +194,10 @@ public class CharacterControll : MonoBehaviour
         GlobalStaticVars.playerPoints += amount;
         points = GlobalStaticVars.playerPoints;
     }
+
+    public void reBalance()
+  {
+    currentYin = initYin;
+    currentYang = maxYang - initYin;
+  }
 }
