@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class Skill_reBalance : Skill
 {
     private CharacterControll cc;
-    private float addHPvalue = 10;
     private void Start()
     {
         if (SceneManager.GetActiveScene().buildIndex == 1)

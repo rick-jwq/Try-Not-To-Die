@@ -102,8 +102,11 @@ public class GameState : MonoBehaviour
         Debug.Log("usedSkill1:" + cc.usedSkill1);
         Debug.Log("usedSkill2:" + cc.usedSkill2);
         Debug.Log("usedSkill3:" + cc.usedSkill3);
+        Debug.Log("usedSkill1:" + cc.usedSkill4);
+        Debug.Log("usedSkill2:" + cc.usedSkill5);
+        Debug.Log("usedSkill3:" + cc.usedSkill6);
 
-        if(GlobalStaticVars.level == 1)
+        if (GlobalStaticVars.level == 1)
         {
             AnalyticsResult level1Monster = Analytics.CustomEvent(
                 "level1Monster",
@@ -160,7 +163,10 @@ public class GameState : MonoBehaviour
                         {"usedYang", cc.usedYang},
                         {"usedSkill1", cc.usedSkill1},
                         {"usedSkill2", cc.usedSkill2},
-                        {"usedSkill3", cc.usedSkill3}, 
+                        {"usedSkill3", cc.usedSkill3},
+                        {"usedSkill4", cc.usedSkill4},
+                        {"usedSkill5", cc.usedSkill5},
+                        {"usedSkill6", cc.usedSkill6},
                         {"LevelTime", GlobalStaticVars.LevelTime},
                         {"tutorialTime", GlobalStaticVars.tutorialTime},
                     }
@@ -177,7 +183,10 @@ public class GameState : MonoBehaviour
                         {"usedYang", cc.usedYang},
                         {"usedSkill1", cc.usedSkill1},
                         {"usedSkill2", cc.usedSkill2},
-                        {"usedSkill3", cc.usedSkill3}, 
+                        {"usedSkill3", cc.usedSkill3},
+                        {"usedSkill4", cc.usedSkill4},
+                        {"usedSkill5", cc.usedSkill5},
+                        {"usedSkill6", cc.usedSkill6},
                         {"LevelTime", GlobalStaticVars.LevelTime},
                         {"tutorialTime", GlobalStaticVars.tutorialTime},
                     }
@@ -194,7 +203,10 @@ public class GameState : MonoBehaviour
                         {"usedYang", cc.usedYang},
                         {"usedSkill1", cc.usedSkill1},
                         {"usedSkill2", cc.usedSkill2},
-                        {"usedSkill3", cc.usedSkill3}, 
+                        {"usedSkill3", cc.usedSkill3},
+                        {"usedSkill4", cc.usedSkill4},
+                        {"usedSkill5", cc.usedSkill5},
+                        {"usedSkill6", cc.usedSkill6},
                         {"LevelTime", GlobalStaticVars.LevelTime},
                         {"tutorialTime", GlobalStaticVars.tutorialTime},
                     }

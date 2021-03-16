@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 7273596599405871554}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6, y: 1, z: 4}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7273596599440080713}
   m_Father: {fileID: 0}
@@ -109,7 +109,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movingSpeed: 2
   isYin: 0
-  hp: 4
   arrayOfInts: 
   level: 0
   EnemyBar: {fileID: 8305214882353587458, guid: e78f4aeb236559b44a41ce1d6c219c0f,
