@@ -22,6 +22,7 @@ public class GameEnd : MonoBehaviour
         if(sendAnalytics)
             gg.analysis(2);
         Time.timeScale = 1;
-        SceneManager.LoadScene(0);        
+        SceneManager.LoadScene(0);       
+        GlobalStaticVars.skills = new List<GameObject>();
     }
 }

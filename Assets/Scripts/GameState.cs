@@ -102,9 +102,9 @@ public class GameState : MonoBehaviour
         Debug.Log("usedSkill1:" + cc.usedSkill1);
         Debug.Log("usedSkill2:" + cc.usedSkill2);
         Debug.Log("usedSkill3:" + cc.usedSkill3);
-        Debug.Log("usedSkill1:" + cc.usedSkill4);
-        Debug.Log("usedSkill2:" + cc.usedSkill5);
-        Debug.Log("usedSkill3:" + cc.usedSkill6);
+        Debug.Log("usedSkill4:" + cc.usedSkill4);
+        Debug.Log("usedSkill5:" + cc.usedSkill5);
+        Debug.Log("usedSkill6:" + cc.usedSkill6);
 
         if (GlobalStaticVars.level == 1)
         {
