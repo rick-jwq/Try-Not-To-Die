@@ -28,6 +28,7 @@ public class Enemy : MonoBehaviour
 
     private GameObject barInstance;
 
+    public AudioSource audiosource;
 
     void Start()
     {
@@ -42,6 +43,7 @@ public class Enemy : MonoBehaviour
         barInstance.GetComponent<EnemyHPBar>().Track(gameObject);
         barInstance.GetComponent<EnemyHPBar>().UpdateArrows();
 
+        audiosource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -53,6 +55,7 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(float attackDamage)
     {
+        audiosource.Play();
         hp = hp - attackDamage;
         arrayOfInts.Add(Random.Range(1, 5));
         barInstance.GetComponent<EnemyHPBar>().UpdateArrows();
