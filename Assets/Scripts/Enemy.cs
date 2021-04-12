@@ -28,11 +28,14 @@ public class Enemy : MonoBehaviour
 
     private GameObject barInstance;
 
+    private GameObject Tutorial;
+
 
     void Start()
     {
         arrayOfInts = new List<int>();
         cc = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterControll>();
+        Tutorial = GameObject.Find("Canvas").transform.Find("EnermyTutorial").gameObject;
         GenerateMoves();
 
         canvas = GameObject.FindGameObjectWithTag("Canvas");
@@ -49,6 +52,14 @@ public class Enemy : MonoBehaviour
     {
         //keep enemy moving left.
         transform.Translate(new Vector3(-1, 0, 0) * Time.deltaTime * movingSpeed);
+        Vector3 position=transform.position;
+        if (!GlobalStaticVars.hasViewedEnermyTutorial && !GlobalStaticVars.skipTutorial && position.x < 16.5)
+        {
+            Time.timeScale = 0;
+            Tutorial.SetActive(true);
+            //inTutorial = true;
+            GlobalStaticVars.hasViewedEnermyTutorial=true;
+        }
     }
 
     public void TakeDamage(float attackDamage)

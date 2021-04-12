@@ -31,9 +31,9 @@ public class GameState : MonoBehaviour
         {
             if(!GlobalStaticVars.hasViewedTutorial)
             {
-                Time.timeScale = 0;
-                Tutorial.SetActive(true);
-                inTutorial = true;
+                //Time.timeScale = 0;
+                //Tutorial.SetActive(true);
+                //inTutorial = true;
                 GlobalStaticVars.hasViewedTutorial = true;
             }
             else
@@ -51,6 +51,11 @@ public class GameState : MonoBehaviour
     public void ResumeGame()
     {
         Time.timeScale = 1;
+    }
+
+    public void SkipTutorial()
+    {
+        GlobalStaticVars.skipTutorial = true;
     }
 
     public void FinishTutorial()
