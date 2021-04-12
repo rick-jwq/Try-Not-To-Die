@@ -23,7 +23,7 @@ public class RewardEnemy : MonoBehaviour
     {
         arrayOfInts = new List<int>();
         cc = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterControll>();
-        Tutorial = GameObject.Find("Canvas").transform.Find("EnermyTutorial").gameObject;
+        Tutorial = GameObject.Find("Canvas").transform.Find("RewardTutorial").gameObject;
         GenerateMoves();
 
 
@@ -40,12 +40,12 @@ public class RewardEnemy : MonoBehaviour
         //keep moving left
         transform.Translate(new Vector3(-1, 0, 0) * Time.deltaTime * movingSpeed);
         Vector3 position=transform.position;
-        if (!GlobalStaticVars.hasViewedEnermyTutorial && !GlobalStaticVars.skipTutorial && position.x < 16.5)
+        if (!GlobalStaticVars.hasViewedRewardTutorial && !GlobalStaticVars.skipTutorial && position.x < 16.5)
         {
             Time.timeScale = 0;
             Tutorial.SetActive(true);
-            //inTutorial = true;
-            GlobalStaticVars.hasViewedEnermyTutorial=true;
+            GlobalStaticVars.inTutorial = true;
+            GlobalStaticVars.hasViewedRewardTutorial=true;
         }
     }
 

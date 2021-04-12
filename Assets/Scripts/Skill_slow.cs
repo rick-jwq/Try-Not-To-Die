@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Skill_slow : Skill
 {
-    private CharacterControll cc;
+    //private CharacterControll cc;
     private EnemyGeneration eg;
 
     private float slowspeed=1f;
@@ -17,9 +17,10 @@ public class Skill_slow : Skill
 
     private void Start()
     {
+        base.onStart();
         if(SceneManager.GetActiveScene().buildIndex == 1)
         {
-            cc = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterControll>();
+            //cc = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterControll>();
             eg = GameObject.FindGameObjectWithTag("GlobalControl").GetComponent<EnemyGeneration>();
         }
     }
@@ -36,6 +37,7 @@ public class Skill_slow : Skill
 
     private void Update()
     {
+        base.onUpdate();
         if(isSlowing)
         {
             slowTimer -= Time.deltaTime;

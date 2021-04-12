@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Skill_onehitkill : Skill
 {
-    private CharacterControll cc;
+    //private CharacterControll cc;
 
     private bool isInEffect = false;
     private float effectTimer = 5f;
@@ -13,10 +13,11 @@ public class Skill_onehitkill : Skill
 
     private void Start()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 1)
+        base.onStart();
+        /*if (SceneManager.GetActiveScene().buildIndex == 1)
         {
             cc = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterControll>();
-        }
+        }*/
     }
     public override void Cast()
     {
@@ -38,6 +39,7 @@ public class Skill_onehitkill : Skill
 
     private void Update()
     {
+        base.onUpdate();
         if (isInEffect)
         {
             effectTimer -= Time.deltaTime;

@@ -5,13 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class Skill_reBalance : Skill
 {
-    private CharacterControll cc;
+    //private CharacterControll cc;
     private void Start()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 1)
+        base.onStart();
+        /*if (SceneManager.GetActiveScene().buildIndex == 1)
         {
             cc = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterControll>();
-        }
+        }*/
     }
     public override void Cast()
     {

@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviour
 
     private GameObject barInstance;
 
-    private GameObject EnermyTutorial;
+    private GameObject EnemyTutorial;
     private GameObject YYBarTutorial;
 
 
@@ -36,8 +36,8 @@ public class Enemy : MonoBehaviour
     {
         arrayOfInts = new List<int>();
         cc = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterControll>();
-        EnermyTutorial = GameObject.Find("Canvas").transform.Find("EnermyTutorial").gameObject;
-        YYBarTutorial = GameObject.Find("Canvas").transform.Find("YinYangBarTutorial").gameObject;
+        EnemyTutorial = GameObject.FindGameObjectWithTag("Canvas").transform.Find("EnemyTutorial").gameObject;
+        YYBarTutorial = GameObject.FindGameObjectWithTag("Canvas").transform.Find("YinYangBarTutorial").gameObject;
         GenerateMoves();
 
         canvas = GameObject.FindGameObjectWithTag("Canvas");
@@ -55,12 +55,12 @@ public class Enemy : MonoBehaviour
         //keep enemy moving left.
         transform.Translate(new Vector3(-1, 0, 0) * Time.deltaTime * movingSpeed);
         Vector3 position=transform.position;
-        if (!GlobalStaticVars.hasViewedEnermyTutorial && !GlobalStaticVars.skipTutorial && position.x < 16.5)
+        if (!GlobalStaticVars.hasViewedEnemyTutorial && !GlobalStaticVars.skipTutorial && position.x < 16.5)
         {
             Time.timeScale = 0;
-            EnermyTutorial.SetActive(true);
-            //inTutorial = true;
-            GlobalStaticVars.hasViewedEnermyTutorial=true;
+            EnemyTutorial.SetActive(true);
+            GlobalStaticVars.inTutorial = true;
+            GlobalStaticVars.hasViewedEnemyTutorial=true;
         }
     }
 
@@ -82,7 +82,7 @@ public class Enemy : MonoBehaviour
             {
                 Time.timeScale = 0;
                 YYBarTutorial.SetActive(true);
-                //inTutorial = true;
+                GlobalStaticVars.inTutorial = true;
                 GlobalStaticVars.hasViewedYYBarTutorial=true;
             }
         }
