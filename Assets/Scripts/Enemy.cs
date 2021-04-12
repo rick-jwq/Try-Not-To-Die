@@ -28,14 +28,16 @@ public class Enemy : MonoBehaviour
 
     private GameObject barInstance;
 
-    private GameObject Tutorial;
+    private GameObject EnermyTutorial;
+    private GameObject YYBarTutorial;
 
 
     void Start()
     {
         arrayOfInts = new List<int>();
         cc = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterControll>();
-        Tutorial = GameObject.Find("Canvas").transform.Find("EnermyTutorial").gameObject;
+        EnermyTutorial = GameObject.Find("Canvas").transform.Find("EnermyTutorial").gameObject;
+        YYBarTutorial = GameObject.Find("Canvas").transform.Find("YinYangBarTutorial").gameObject;
         GenerateMoves();
 
         canvas = GameObject.FindGameObjectWithTag("Canvas");
@@ -56,7 +58,7 @@ public class Enemy : MonoBehaviour
         if (!GlobalStaticVars.hasViewedEnermyTutorial && !GlobalStaticVars.skipTutorial && position.x < 16.5)
         {
             Time.timeScale = 0;
-            Tutorial.SetActive(true);
+            EnermyTutorial.SetActive(true);
             //inTutorial = true;
             GlobalStaticVars.hasViewedEnermyTutorial=true;
         }
@@ -76,7 +78,13 @@ public class Enemy : MonoBehaviour
             {cc.killedYang+=1;}
             else
             {cc.killedYin+=1;}
-
+            if (!GlobalStaticVars.hasViewedYYBarTutorial && !GlobalStaticVars.skipTutorial)
+            {
+                Time.timeScale = 0;
+                YYBarTutorial.SetActive(true);
+                //inTutorial = true;
+                GlobalStaticVars.hasViewedYYBarTutorial=true;
+            }
         }
     }
 

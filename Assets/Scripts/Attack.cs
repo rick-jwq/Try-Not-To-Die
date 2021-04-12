@@ -39,22 +39,24 @@ public class Attack : MonoBehaviour
                 rewardTarget = Enemyarry[0].GetComponent<RewardEnemy>();
             }
 
-
-            if (Input.GetKeyDown(KeyCode.UpArrow))
+            if (Time.timeScale != 0)
             {
-                attackUp();
-            }
-            if (Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                attackDown();
-            }
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                attackRight();
-            }
-            if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                attackLeft();
+                if (Input.GetKeyDown(KeyCode.UpArrow))
+                {
+                    attackUp();
+                }
+                if (Input.GetKeyDown(KeyCode.DownArrow))
+                {
+                    attackDown();
+                }
+                if (Input.GetKeyDown(KeyCode.LeftArrow))
+                {
+                    attackRight();
+                }
+                if (Input.GetKeyDown(KeyCode.RightArrow))
+                {
+                    attackLeft();
+                }
             }
         }
         }

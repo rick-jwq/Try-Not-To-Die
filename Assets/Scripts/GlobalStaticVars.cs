@@ -19,6 +19,8 @@ public static class GlobalStaticVars
 
     public static bool skipTutorial { get; set; } = false;
     public static bool hasViewedEnermyTutorial { get; set; } = false;
+    public static bool hasViewedEnergyTutorial { get; set; } = false;
+    public static bool hasViewedYYBarTutorial { get; set; } = false;
 
     public static float LevelTime { get; set; } = 0;
     public static float tutorialTime { get; set; } = 0;
