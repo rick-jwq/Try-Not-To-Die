@@ -26,4 +26,8 @@ public class Skill_addHP : Skill
             cc.ChangeHealth(addHPvalue);
         }
     }
+    private void Update()
+    {
+        base.onUpdate();
+    }
 }

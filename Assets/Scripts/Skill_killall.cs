@@ -31,4 +31,8 @@ public class Skill_killall : Skill
             }
         }
     }
+    private void Update()
+    {
+        base.onUpdate();
+    }
 }

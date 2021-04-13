@@ -25,4 +25,8 @@ public class Skill_reBalance : Skill
             cc.reBalance();
         }
     }
+    private void Update()
+    {
+        base.onUpdate();
+    }
 }
