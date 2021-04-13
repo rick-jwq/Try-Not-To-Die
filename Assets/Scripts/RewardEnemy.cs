@@ -17,6 +17,9 @@ public class RewardEnemy : MonoBehaviour
     public bool isTracked = false;
 
     private GameObject barInstance;
+
+    public AudioSource audiosource;
+
     void Start()
     {
         arrayOfInts = new List<int>();
@@ -29,6 +32,8 @@ public class RewardEnemy : MonoBehaviour
         barInstance.transform.SetParent(canvas.transform, false);
         barInstance.GetComponent<RewardEnemyBar>().Track(gameObject);
         barInstance.GetComponent<RewardEnemyBar>().UpdateArrows();
+
+        audiosource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -41,6 +46,7 @@ public class RewardEnemy : MonoBehaviour
     //take tamage
     public void TakeDamage(float attackDamage)
     {
+        audiosource.Play();
         arrayOfInts.Add(Random.Range(1, 5));
         barInstance.GetComponent<RewardEnemyBar>().UpdateArrows();
         reward += 1;
