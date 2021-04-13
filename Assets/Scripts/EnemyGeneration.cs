@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyGeneration : MonoBehaviour
 {
-    public CharacterControll cc;
+    private CharacterControll cc;
     public GameObject YinEnemy;
     public GameObject YangEnemy;
     public GameObject RewardEnemy;
@@ -36,6 +36,7 @@ public class EnemyGeneration : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        cc = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterControll>();
         startHP = GlobalStaticVars.enemyHP;
         startMS = GlobalStaticVars.enemyMS;
         curHP = startHP;

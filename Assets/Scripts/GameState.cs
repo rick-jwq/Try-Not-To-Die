@@ -6,7 +6,7 @@ using UnityEngine.Analytics;
 
 public class GameState : MonoBehaviour
 {
-    public CharacterControll cc;
+    private CharacterControll cc;
     public static GameState instance;
 
     public GameObject Tutorial;
@@ -17,6 +17,7 @@ public class GameState : MonoBehaviour
 
     private void Start()
     {
+        cc = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterControll>();
         instance = this;
     }
 
@@ -65,6 +66,8 @@ public class GameState : MonoBehaviour
         {
             GlobalStaticVars.tutorialTime += Time.unscaledDeltaTime;
         }
+
+        RenderSettings.skybox.SetFloat("_Rotation", Time.time);
     }
 
     public void analysis(int state)

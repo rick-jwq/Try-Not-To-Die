@@ -59,8 +59,11 @@ public class RewardEnemy : MonoBehaviour
 
     public void DestroySelf()
     {
-        Destroy(gameObject);
-        Destroy(barInstance.gameObject);
+        gameObject.GetComponent<Animator>().SetBool("Die", true);
+        gameObject.GetComponent<BoxCollider>().enabled = false;
+        gameObject.tag = "Untagged";
+        Destroy(gameObject, 1f);
+        Destroy(barInstance.gameObject, 1f);
     }
 
     private void GenerateMoves()

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -32,7 +33,7 @@ public class CharacterControll : MonoBehaviour
 
     public Text YinText;
     public Text YangText;
-    public GameObject UnbalanceText;
+    public Image UnbalanceMask;
 
     public GameObject GameEndScreen;
 
@@ -89,7 +90,7 @@ public class CharacterControll : MonoBehaviour
         points = GlobalStaticVars.playerPoints;
 
     currentStoredYin = 0;
-    currentStoredYang = 0;
+    currentStoredYang = 5;
 
     currentYin = initYin;
     currentYang = maxYang - initYin;
@@ -109,6 +110,8 @@ public class CharacterControll : MonoBehaviour
     // Update is called once per frame
     void Update()
   {
+
+        transform.position = new Vector3(transform.position.x, -1f + 0.1f * Mathf.Sin(1.5f * Time.time), transform.position.z);
     //if (currentLevel % 5 == 0)
     //{
     //    scalingFactor++;
@@ -154,18 +157,18 @@ public class CharacterControll : MonoBehaviour
     {
       isDrainingHealth = true;
       losingSpeed = -0.6f;
-            UnbalanceText.SetActive(true);
+            UnbalanceMask.color = new Color(1f, 0f, 0f, 0.3f);
     }
     else if (amount + currentYin <= 20 || amount + currentYin >= 80)
     {
       isDrainingHealth = true;
       losingSpeed = -0.3f;
-            UnbalanceText.SetActive(true);
+            UnbalanceMask.color = new Color(1f, 0f, 0f, 0.3f);
         }
     else
     {
       isDrainingHealth = false;
-            UnbalanceText.SetActive(false);
+            UnbalanceMask.color = new Color(1f, 1f, 1f, 0.17f);
         }
 
     time = 0.1f;

@@ -11,10 +11,25 @@ public class Attack : MonoBehaviour
 
     public GameObject[] Enemyarry;
 
-    public CharacterControll cc;
+    private CharacterControll cc;
 
     private float penalty_timer = 1f;
     private bool allowAttack = true;
+
+    private Animator animator;
+    private bool punchleft = false;
+
+    public GameObject beam;
+    public GameObject wrongBeam;
+
+    public static Attack instance;
+
+    private void Start()
+    {
+        instance = this;
+        cc = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterControll>();
+        animator = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+    }
     void Update()
     {
         if(!allowAttack)
@@ -38,36 +53,75 @@ public class Attack : MonoBehaviour
             {
                 rewardTarget = Enemyarry[0].GetComponent<RewardEnemy>();
             }
-
-
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-                attackUp();
+                    if(punchleft)
+                    {
+                        animator.SetTrigger("punch");
+                        punchleft = !punchleft;
+                    }
+                    else
+                    {
+                        animator.SetTrigger("punch1");
+                        punchleft = !punchleft;
+                    }
+                attack(1);
             }
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
-                attackDown();
+                    if (punchleft)
+                    {
+                        animator.SetTrigger("punch");
+                        punchleft = !punchleft;
+                    }
+                    else
+                    {
+                        animator.SetTrigger("punch1");
+                        punchleft = !punchleft;
+                    }
+                    attack(2);
             }
             if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                attackRight();
+                    if (punchleft)
+                    {
+                        animator.SetTrigger("punch");
+                        punchleft = !punchleft;
+                    }
+                    else
+                    {
+                        animator.SetTrigger("punch1");
+                        punchleft = !punchleft;
+                    }
+                    attack(3);
             }
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
-                attackLeft();
+                    if (punchleft)
+                    {
+                        animator.SetTrigger("punch");
+                        punchleft = !punchleft;
+                    }
+                    else
+                    {
+                        animator.SetTrigger("punch1");
+                        punchleft = !punchleft;
+                    }
+                    attack(4);
             }
         }
         }
 
     }
 
-    void attackUp()
+    void attack(int way)
     {
         // if the enemy array is not empty or its first int is equal to our attack direction
         if (target && (target.arrayOfInts.Count > 0))
         {
-            if(target.arrayOfInts[0] == 1)
+            if(target.arrayOfInts[0] == way)
             {
+                Instantiate(beam, new Vector3(0.1f, 1, 5), Quaternion.identity);
                 target.arrayOfInts.RemoveAt(0);
                 target.TakeDamage(cc.attack);
                 cc.attackTotal += 1;
@@ -75,13 +129,15 @@ public class Attack : MonoBehaviour
             }
             else
             {
+                Instantiate(wrongBeam, new Vector3(0.1f, 1, 5), Quaternion.identity);
                 allowAttack = false;
             }
         }
         else if (rewardTarget && (rewardTarget.arrayOfInts.Count > 0))
         {
-            if (rewardTarget.arrayOfInts[0] == 1)
+            if (rewardTarget.arrayOfInts[0] == way)
             {
+                Instantiate(beam, new Vector3(0.1f, 1, 5), Quaternion.identity);
                 rewardTarget.arrayOfInts.RemoveAt(0);
                 rewardTarget.TakeDamage(cc.attack);
                 cc.attackTotal += 1;
@@ -89,6 +145,7 @@ public class Attack : MonoBehaviour
             }
             else
             {
+                Instantiate(wrongBeam, new Vector3(0.1f, 1, 5), Quaternion.identity);
                 allowAttack = false;
             }
         }
@@ -97,112 +154,4 @@ public class Attack : MonoBehaviour
             cc.attackTotal += 1;
         }
     }
-    void attackDown()
-    {
-        if (target && (target.arrayOfInts.Count > 0))
-        {
-            if (target.arrayOfInts[0] == 2)
-            {
-                target.arrayOfInts.RemoveAt(0);
-                target.TakeDamage(cc.attack);
-                cc.attackTotal += 1;
-                cc.attackCorrect += 1;
-            }
-            else
-            {
-                allowAttack = false;
-            }
-        }
-        else if (rewardTarget && (rewardTarget.arrayOfInts.Count > 0))
-        {
-            if (rewardTarget.arrayOfInts[0] == 2)
-            {
-                rewardTarget.arrayOfInts.RemoveAt(0);
-                rewardTarget.TakeDamage(cc.attack);
-                cc.attackTotal += 1;
-                cc.attackCorrect += 1;
-            }
-            else
-            {
-                allowAttack = false;
-            }
-        }
-        else
-        {
-            cc.attackTotal += 1;
-        }
-    }
-    void attackRight()
-    {
-        if (target && (target.arrayOfInts.Count > 0))
-        {
-            if (target.arrayOfInts[0] == 3)
-            {
-                target.arrayOfInts.RemoveAt(0);
-                target.TakeDamage(cc.attack);
-                cc.attackTotal += 1;
-                cc.attackCorrect += 1;
-            }
-            else
-            {
-                allowAttack = false;
-            }
-        }
-        else if (rewardTarget && (rewardTarget.arrayOfInts.Count > 0))
-        {
-            if (rewardTarget.arrayOfInts[0] == 3)
-            {
-                rewardTarget.arrayOfInts.RemoveAt(0);
-                rewardTarget.TakeDamage(cc.attack);
-                cc.attackTotal += 1;
-                cc.attackCorrect += 1;
-            }
-            else
-            {
-                allowAttack = false;
-            }
-        }
-        else
-        {
-            cc.attackTotal += 1;
-        }
-    }
-
-    void attackLeft()
-    {
-        if (target && (target.arrayOfInts.Count > 0))
-        {
-            if (target.arrayOfInts[0] == 4)
-            {
-                target.arrayOfInts.RemoveAt(0);
-                target.TakeDamage(cc.attack);
-                cc.attackTotal += 1;
-                cc.attackCorrect += 1;
-            }
-            else
-            {
-                allowAttack = false;
-            }
-        }
-        else if (rewardTarget && (rewardTarget.arrayOfInts.Count > 0))
-        {
-            if (rewardTarget.arrayOfInts[0] == 4)
-            {
-                rewardTarget.arrayOfInts.RemoveAt(0);
-                rewardTarget.TakeDamage(cc.attack);
-                cc.attackTotal += 1;
-                cc.attackCorrect += 1;
-            }
-            else
-            {
-                allowAttack = false;
-            }
-        }
-        else
-        {
-            cc.attackTotal += 1;
-        }
-    }
-
-
 }

@@ -8,11 +8,12 @@ public class EnergyGeneration : MonoBehaviour
     //public GameObject yinPrefab;
     //public GameObject yangPrefab;
 
-    public CharacterControll cc;
+    private CharacterControll cc;
 
     // Start is called before the first frame update
     void Start()
     {
+        cc = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterControll>();
         InvokeRepeating("EnergySpawn",2f,4f);
     }
 

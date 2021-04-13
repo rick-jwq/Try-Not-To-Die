@@ -118,13 +118,17 @@ public class Enemy : MonoBehaviour
             {cc.damageYang+=1;}
             else
             {cc.damageYin+=1;}
+
             DestroySelf();
         }
     }
 
     public void DestroySelf()
     {
-        Destroy(gameObject);
+        gameObject.GetComponent<Animator>().SetBool("Die", true);
+        gameObject.GetComponent<BoxCollider>().enabled = false;
+        gameObject.tag = "Untagged";
+        Destroy(gameObject, 1f);
         Destroy(barInstance.gameObject);
     }
 }

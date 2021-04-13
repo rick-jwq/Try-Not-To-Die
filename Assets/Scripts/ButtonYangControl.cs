@@ -5,11 +5,12 @@ using UnityEngine.UI;
 
 public class ButtonYangControl : MonoBehaviour
 {
-    public CharacterControll cc;
+    private CharacterControll cc;
     private Text b2text;
     // Start is called before the first frame update
     void Start()
     {
+        cc = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterControll>();
         b2text = GetComponentInChildren<Text>();
     }
 
