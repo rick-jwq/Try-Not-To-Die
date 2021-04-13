@@ -6,152 +6,153 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
-    public Enemy target;
-    public RewardEnemy rewardTarget;
+  public Enemy target;
+  public RewardEnemy rewardTarget;
 
-    public GameObject[] Enemyarry;
+  public GameObject[] Enemyarry;
 
-    private CharacterControll cc;
+  private CharacterControll cc;
 
-    private float penalty_timer = 1f;
-    private bool allowAttack = true;
+  private float penalty_timer = 1f;
+  private bool allowAttack = true;
 
-    private Animator animator;
-    private bool punchleft = false;
+  private Animator animator;
+  private bool punchleft = false;
 
-    public GameObject beam;
-    public GameObject wrongBeam;
+  public GameObject beam;
+  public GameObject wrongBeam;
 
-    public static Attack instance;
+  public static Attack instance;
 
-    private void Start()
+  private void Start()
+  {
+    instance = this;
+    cc = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterControll>();
+    animator = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+  }
+  void Update()
+  {
+    if (!allowAttack)
     {
-        instance = this;
-        cc = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterControll>();
-        animator = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
-    }
-    void Update()
-    {
-        if(!allowAttack)
-        {
-            penalty_timer -= Time.deltaTime;
-            if(penalty_timer <= 0f)
-            {
-                allowAttack = true;
-                penalty_timer = 1f;
-            }
-        }
-
-        if (GlobalStaticVars.GameStart && allowAttack){
-        //Enemyarry is an array with all exsiting enemy on map.
-        Enemyarry = GameObject.FindGameObjectsWithTag("Enemy"); 
-
-        if(Enemyarry.Length > 0)
-        {
-            target = Enemyarry[0].GetComponent<Enemy>();
-            if(!target)
-            {
-                rewardTarget = Enemyarry[0].GetComponent<RewardEnemy>();
-            }
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                    if(punchleft)
-                    {
-                        animator.SetTrigger("punch");
-                        punchleft = !punchleft;
-                    }
-                    else
-                    {
-                        animator.SetTrigger("punch1");
-                        punchleft = !punchleft;
-                    }
-                attack(1);
-            }
-            if (Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                    if (punchleft)
-                    {
-                        animator.SetTrigger("punch");
-                        punchleft = !punchleft;
-                    }
-                    else
-                    {
-                        animator.SetTrigger("punch1");
-                        punchleft = !punchleft;
-                    }
-                    attack(2);
-            }
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                    if (punchleft)
-                    {
-                        animator.SetTrigger("punch");
-                        punchleft = !punchleft;
-                    }
-                    else
-                    {
-                        animator.SetTrigger("punch1");
-                        punchleft = !punchleft;
-                    }
-                    attack(3);
-            }
-            if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                    if (punchleft)
-                    {
-                        animator.SetTrigger("punch");
-                        punchleft = !punchleft;
-                    }
-                    else
-                    {
-                        animator.SetTrigger("punch1");
-                        punchleft = !punchleft;
-                    }
-                    attack(4);
-            }
-        }
-        }
-
+      penalty_timer -= Time.deltaTime;
+      if (penalty_timer <= 0f)
+      {
+        allowAttack = true;
+        penalty_timer = 1f;
+      }
     }
 
-    void attack(int way)
+    if (GlobalStaticVars.GameStart && allowAttack)
     {
-        // if the enemy array is not empty or its first int is equal to our attack direction
-        if (target && (target.arrayOfInts.Count > 0))
+      //Enemyarry is an array with all exsiting enemy on map.
+      Enemyarry = GameObject.FindGameObjectsWithTag("Enemy");
+
+      if (Enemyarry.Length > 0)
+      {
+        target = Enemyarry[0].GetComponent<Enemy>();
+        if (!target)
         {
-            if(target.arrayOfInts[0] == way)
-            {
-                Instantiate(beam, new Vector3(0.1f, 1, 5), Quaternion.identity);
-                target.arrayOfInts.RemoveAt(0);
-                target.TakeDamage(cc.attack);
-                cc.attackTotal += 1;
-                cc.attackCorrect += 1;
-            }
-            else
-            {
-                Instantiate(wrongBeam, new Vector3(0.1f, 1, 5), Quaternion.identity);
-                allowAttack = false;
-            }
+          rewardTarget = Enemyarry[0].GetComponent<RewardEnemy>();
         }
-        else if (rewardTarget && (rewardTarget.arrayOfInts.Count > 0))
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            if (rewardTarget.arrayOfInts[0] == way)
-            {
-                Instantiate(beam, new Vector3(0.1f, 1, 5), Quaternion.identity);
-                rewardTarget.arrayOfInts.RemoveAt(0);
-                rewardTarget.TakeDamage(cc.attack);
-                cc.attackTotal += 1;
-                cc.attackCorrect += 1;
-            }
-            else
-            {
-                Instantiate(wrongBeam, new Vector3(0.1f, 1, 5), Quaternion.identity);
-                allowAttack = false;
-            }
+          if (punchleft)
+          {
+            animator.SetTrigger("punch");
+            punchleft = !punchleft;
+          }
+          else
+          {
+            animator.SetTrigger("punch1");
+            punchleft = !punchleft;
+          }
+          attack(1);
         }
-        else
+        if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            cc.attackTotal += 1;
+          if (punchleft)
+          {
+            animator.SetTrigger("punch");
+            punchleft = !punchleft;
+          }
+          else
+          {
+            animator.SetTrigger("punch1");
+            punchleft = !punchleft;
+          }
+          attack(2);
         }
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+          if (punchleft)
+          {
+            animator.SetTrigger("punch");
+            punchleft = !punchleft;
+          }
+          else
+          {
+            animator.SetTrigger("punch1");
+            punchleft = !punchleft;
+          }
+          attack(3);
+        }
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+          if (punchleft)
+          {
+            animator.SetTrigger("punch");
+            punchleft = !punchleft;
+          }
+          else
+          {
+            animator.SetTrigger("punch1");
+            punchleft = !punchleft;
+          }
+          attack(4);
+        }
+      }
     }
+
+  }
+
+  void attack(int way)
+  {
+    // if the enemy array is not empty or its first int is equal to our attack direction
+    if (target && (target.arrayOfInts.Count > 0))
+    {
+      if (target.arrayOfInts[0] == way)
+      {
+        Instantiate(beam, new Vector3(0.1f, 1, 5), Quaternion.identity);
+        target.arrayOfInts.RemoveAt(0);
+        target.TakeDamage(cc.attack);
+        cc.attackTotal += 1;
+        cc.attackCorrect += 1;
+      }
+      else
+      {
+        Instantiate(wrongBeam, new Vector3(0.1f, 1, 5), Quaternion.identity);
+        allowAttack = false;
+      }
+    }
+    else if (rewardTarget && (rewardTarget.arrayOfInts.Count > 0))
+    {
+      if (rewardTarget.arrayOfInts[0] == way)
+      {
+        Instantiate(beam, new Vector3(0.1f, 1, 5), Quaternion.identity);
+        rewardTarget.arrayOfInts.RemoveAt(0);
+        rewardTarget.TakeDamage(cc.attack);
+        cc.attackTotal += 1;
+        cc.attackCorrect += 1;
+      }
+      else
+      {
+        Instantiate(wrongBeam, new Vector3(0.1f, 1, 5), Quaternion.identity);
+        allowAttack = false;
+      }
+    }
+    else
+    {
+      cc.attackTotal += 1;
+    }
+  }
 }

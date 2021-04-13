@@ -50,9 +50,9 @@ public class CharacterControll : MonoBehaviour
   int currentYang;
   public int yang { get { return currentYang; } }
 
-  int currentStoredYin;
+  int currentStoredYin=0;
   public int storedYin { get { return currentStoredYin; } }
-  int currentStoredYang;
+  int currentStoredYang=0;
   public int storedYang { get { return currentStoredYang; } }
   private Rigidbody rb;
 
@@ -63,6 +63,9 @@ public class CharacterControll : MonoBehaviour
   public int attack { get; set; }
 
   public int points { get; set; }
+
+  public GameObject EnergyTutorial;
+  public GameObject HPBarTutorial;
 
   //int scalingFactor;
 
@@ -126,7 +129,13 @@ public class CharacterControll : MonoBehaviour
         ChangeHealth(losingSpeed);
       }
     }
-
+    if (!GlobalStaticVars.hasViewedHPBarTutorial && !GlobalStaticVars.skipTutorial && currentHealth<maxHealth)
+    {
+        Time.timeScale = 0;
+        HPBarTutorial.SetActive(true);
+        GlobalStaticVars.inTutorial = true;
+        GlobalStaticVars.hasViewedHPBarTutorial=true;
+    }
         progressBar.GetComponentsInChildren<Text>()[1].text = (killedYang + killedYin).ToString() + " / " + GlobalStaticVars.enemyNumber;
         progressBar.GetComponentsInChildren<RectTransform>()[1].sizeDelta = new Vector2((killedYang + killedYin) * 600 / GlobalStaticVars.enemyNumber,40);
 
@@ -170,6 +179,14 @@ public class CharacterControll : MonoBehaviour
       isDrainingHealth = false;
             UnbalanceMask.color = new Color(1f, 1f, 1f, 0.17f);
         }
+    
+    if (!GlobalStaticVars.hasViewedEnergyTutorial && !GlobalStaticVars.skipTutorial && (amount + currentYin <= 30 || amount + currentYin >= 70))
+    {
+        Time.timeScale = 0;
+        EnergyTutorial.SetActive(true);
+        GlobalStaticVars.inTutorial = true;
+        GlobalStaticVars.hasViewedEnergyTutorial=true;
+    }
 
     time = 0.1f;
     currentYin = Mathf.Clamp(currentYin + amount, 0, maxYin);

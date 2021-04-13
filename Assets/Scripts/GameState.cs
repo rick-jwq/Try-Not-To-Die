@@ -13,7 +13,7 @@ public class GameState : MonoBehaviour
     public GameObject GameWinScreen;
     public GameObject GameEndScreen;
 
-    private bool inTutorial = false;
+    //private bool inTutorial = false;
 
     private void Start()
     {
@@ -34,7 +34,7 @@ public class GameState : MonoBehaviour
             {
                 Time.timeScale = 0;
                 Tutorial.SetActive(true);
-                inTutorial = true;
+                GlobalStaticVars.inTutorial = true;
                 GlobalStaticVars.hasViewedTutorial = true;
             }
             else
@@ -54,15 +54,20 @@ public class GameState : MonoBehaviour
         Time.timeScale = 1;
     }
 
+    public void SkipTutorial()
+    {
+        GlobalStaticVars.skipTutorial = true;
+    }
+
     public void FinishTutorial()
     {
         Time.timeScale = 1;
-        inTutorial = false;
+        GlobalStaticVars.inTutorial = false;
     }
 
     private void Update()
     {
-        if(inTutorial)
+        if(GlobalStaticVars.inTutorial)
         {
             GlobalStaticVars.tutorialTime += Time.unscaledDeltaTime;
         }

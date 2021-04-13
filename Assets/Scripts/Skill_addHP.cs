@@ -5,14 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class Skill_addHP : Skill
 {
-    private CharacterControll cc;
+    //private CharacterControll cc;
     private float addHPvalue = 10;
     private void Start()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 1)
+        base.onStart();
+        /*if (SceneManager.GetActiveScene().buildIndex == 1)
         {
             cc = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterControll>();
-        }
+        }*/
     }
     public override void Cast()
     {
@@ -24,5 +25,9 @@ public class Skill_addHP : Skill
 
             cc.ChangeHealth(addHPvalue);
         }
+    }
+    private void Update()
+    {
+        base.onUpdate();
     }
 }

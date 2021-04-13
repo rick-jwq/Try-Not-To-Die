@@ -4,92 +4,102 @@ using UnityEngine;
 
 public class RewardEnemy : MonoBehaviour
 {
-    // Start is called before the first frame update
-    [SerializeField] float movingSpeed = 2f;
+  // Start is called before the first frame update
+  [SerializeField] float movingSpeed = 2f;
 
-    public int reward = 0;
-    public List<int> arrayOfInts;
+  public int reward = 0;
+  public List<int> arrayOfInts;
 
-    private CharacterControll cc;
+  private CharacterControll cc;
 
-    public GameObject EnemyBar;
-    private GameObject canvas;
-    public bool isTracked = false;
+  public GameObject EnemyBar;
+  private GameObject canvas;
+  public bool isTracked = false;
 
-    private GameObject barInstance;
+  private GameObject barInstance;
 
-    public AudioSource audiosource;
+  public AudioSource audiosource;
 
-    void Start()
+  private GameObject Tutorial;
+  void Start()
+  {
+    arrayOfInts = new List<int>();
+    cc = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterControll>();
+    Tutorial = GameObject.Find("Canvas").transform.Find("RewardTutorial").gameObject;
+    GenerateMoves();
+
+
+    canvas = GameObject.FindGameObjectWithTag("Canvas");
+    barInstance = Instantiate(EnemyBar, new Vector3(1000, 1000, 1000), Quaternion.identity);
+    barInstance.transform.SetParent(canvas.transform, false);
+    barInstance.GetComponent<RewardEnemyBar>().Track(gameObject);
+    barInstance.GetComponent<RewardEnemyBar>().UpdateArrows();
+
+    audiosource = GetComponent<AudioSource>();
+  }
+
+  // Update is called once per frame
+  void Update()
+  {
+    //keep moving left
+    transform.Translate(new Vector3(-1, 0, 0) * Time.deltaTime * movingSpeed);
+    Vector3 position = transform.position;
+    if (!GlobalStaticVars.hasViewedRewardTutorial && !GlobalStaticVars.skipTutorial && position.x < 16.5)
     {
-        arrayOfInts = new List<int>();
-        cc = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterControll>();
-        GenerateMoves();
-
-
-        canvas = GameObject.FindGameObjectWithTag("Canvas");
-        barInstance = Instantiate(EnemyBar, new Vector3(1000, 1000, 1000), Quaternion.identity);
-        barInstance.transform.SetParent(canvas.transform, false);
-        barInstance.GetComponent<RewardEnemyBar>().Track(gameObject);
-        barInstance.GetComponent<RewardEnemyBar>().UpdateArrows();
-
-        audiosource = GetComponent<AudioSource>();
+      Time.timeScale = 0;
+      Tutorial.SetActive(true);
+      GlobalStaticVars.inTutorial = true;
+      GlobalStaticVars.hasViewedRewardTutorial = true;
     }
+  }
 
-    // Update is called once per frame
-    void Update()
+  //take tamage
+  public void TakeDamage(float attackDamage)
+  {
+    audiosource.Play();
+    arrayOfInts.Add(Random.Range(1, 5));
+    barInstance.GetComponent<RewardEnemyBar>().UpdateArrows();
+    reward += 1;
+  }
+
+
+  private void OnTriggerEnter(Collider other)
+  {
+    if (other.gameObject.tag == "Player")
     {
-        //keep moving left
-        transform.Translate(new Vector3(-1, 0, 0) * Time.deltaTime * movingSpeed);
+      DestroySelf();
+      cc.rewardPoints(reward);
+      EnemyGeneration.instance.isGenerating = true;
     }
+  }
 
-    //take tamage
-    public void TakeDamage(float attackDamage)
+  public void DestroySelf()
+  {
+    gameObject.GetComponent<Animator>().SetBool("Die", true);
+    gameObject.GetComponent<BoxCollider>().enabled = false;
+    gameObject.tag = "Untagged";
+    Destroy(gameObject, 1f);
+    Destroy(barInstance.gameObject, 1f);
+  }
+
+  private void GenerateMoves()
+  {
+
+    for (int i = 0; i < 3; i++)
     {
-        audiosource.Play();
-        arrayOfInts.Add(Random.Range(1, 5));
-        barInstance.GetComponent<RewardEnemyBar>().UpdateArrows();
-        reward += 1;
+      arrayOfInts.Add(Random.Range(1, 5));
     }
+  }
+
+  public float getHP()
+  {
+    return 99999;
+  }
 
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            DestroySelf();
-            cc.rewardPoints(reward);
-            EnemyGeneration.instance.isGenerating = true;
-        }
-    }
-
-    public void DestroySelf()
-    {
-        gameObject.GetComponent<Animator>().SetBool("Die", true);
-        gameObject.GetComponent<BoxCollider>().enabled = false;
-        gameObject.tag = "Untagged";
-        Destroy(gameObject, 1f);
-        Destroy(barInstance.gameObject, 1f);
-    }
-
-    private void GenerateMoves()
-    {
-
-        for (int i = 0; i < 3; i++)
-        {
-            arrayOfInts.Add(Random.Range(1, 5));
-        }
-    }
-
-    public float getHP()
-    {
-        return 99999;
-    }
-
-
-    public float getHPpercent()
-    {
-        return 1;
-    }
+  public float getHPpercent()
+  {
+    return 1;
+  }
 
 }

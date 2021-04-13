@@ -145,8 +145,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 1
   skill_name: DoubleAttack
-  Yincost: 0
-  Yangcost: 0
+  Yincost: 1
+  Yangcost: 1
 --- !u!1 &5558773115875373150
 GameObject:
   m_ObjectHideFlags: 0

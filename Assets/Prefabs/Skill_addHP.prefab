@@ -225,5 +225,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 1
   skill_name: Add HP
-  Yincost: 0
-  Yangcost: 0
+  Yincost: 1
+  Yangcost: 1

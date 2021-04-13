@@ -17,6 +17,15 @@ public static class GlobalStaticVars
     public static int level { get; set; } = 1;
     public static bool GameStart { get; set; } = true;
 
+    public static bool skipTutorial { get; set; } = false;
+    public static bool hasViewedEnemyTutorial { get; set; } = false;
+    public static bool hasViewedEnergyTutorial { get; set; } = false;
+    public static bool hasViewedYYBarTutorial { get; set; } = false;
+    public static bool hasViewedSkillTutorial { get; set; } = false;
+    public static bool hasViewedHPBarTutorial { get; set; } = false;
+    public static bool hasViewedRewardTutorial { get; set; } = false;
+
     public static float LevelTime { get; set; } = 0;
     public static float tutorialTime { get; set; } = 0;
+    public static bool inTutorial { get; set; } = false;
 }
