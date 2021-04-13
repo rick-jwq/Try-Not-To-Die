@@ -41,10 +41,10 @@ public class RewardEnemyBar : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
-        int i;
-        for (i = 0; i < enemyScript.arrayOfInts.Count; i++)
-        {
-            switch (enemyScript.arrayOfInts[i])
+        //int i;
+        //for (i = 0; i < enemyScript.arrayOfInts.Count; i++)
+        //{
+            switch (enemyScript.arrayOfInts[0])
             {
                 case 1:
                     arrow = Instantiate(UpArrow);
@@ -63,6 +63,6 @@ public class RewardEnemyBar : MonoBehaviour
                     arrow.transform.SetParent(arrowContainer.transform, false);
                     break;
             }
-        }
+        //}
     }
 }

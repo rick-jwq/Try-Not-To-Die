@@ -66,6 +66,7 @@ public class CharacterControll : MonoBehaviour
 
   public GameObject EnergyTutorial;
   public GameObject HPBarTutorial;
+    public GameObject SkillTutorial;
 
   //int scalingFactor;
 
@@ -74,12 +75,28 @@ public class CharacterControll : MonoBehaviour
     currentStoredYin = currentStoredYin + amount;
         YinText.text = currentStoredYin.ToString();
 
-  }
+        if (!GlobalStaticVars.hasViewedSkillTutorial && !GlobalStaticVars.skipTutorial && storedYin >= 1 && storedYang >= 1)
+        {
+            Time.timeScale = 0;
+            SkillTutorial.SetActive(true);
+            GlobalStaticVars.inTutorial = true;
+            GlobalStaticVars.hasViewedSkillTutorial = true;
+        }
+
+    }
   public void ChangeStoredYang(int amount)
   {
     currentStoredYang = currentStoredYang + amount;
         YangText.text = currentStoredYang.ToString();
-  }
+
+        if (!GlobalStaticVars.hasViewedSkillTutorial && !GlobalStaticVars.skipTutorial && storedYin >= 1 && storedYang >= 1)
+        {
+            Time.timeScale = 0;
+            SkillTutorial.SetActive(true);
+            GlobalStaticVars.inTutorial = true;
+            GlobalStaticVars.hasViewedSkillTutorial = true;
+        }
+    }
 
   // Start is called before the first frame update
   void Start()
@@ -93,7 +110,7 @@ public class CharacterControll : MonoBehaviour
         points = GlobalStaticVars.playerPoints;
 
     currentStoredYin = 0;
-    currentStoredYang = 5;
+    currentStoredYang = 0;
 
     currentYin = initYin;
     currentYang = maxYang - initYin;
@@ -180,7 +197,7 @@ public class CharacterControll : MonoBehaviour
             UnbalanceMask.color = new Color(1f, 1f, 1f, 0.17f);
         }
     
-    if (!GlobalStaticVars.hasViewedEnergyTutorial && !GlobalStaticVars.skipTutorial && (amount + currentYin <= 30 || amount + currentYin >= 70))
+    if (!GlobalStaticVars.hasViewedEnergyTutorial && !GlobalStaticVars.skipTutorial && (amount + currentYin <= 20 || amount + currentYin >= 80))
     {
         Time.timeScale = 0;
         EnergyTutorial.SetActive(true);

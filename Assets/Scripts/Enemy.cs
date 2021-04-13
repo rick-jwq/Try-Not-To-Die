@@ -28,10 +28,9 @@ public class Enemy : MonoBehaviour
 
   private GameObject barInstance;
 
-  public AudioSource audiosource;
+  private AudioSource audiosource;
   private GameObject EnemyTutorial;
   private GameObject YYBarTutorial;
-
 
   void Start()
   {
@@ -49,6 +48,7 @@ public class Enemy : MonoBehaviour
     barInstance.GetComponent<EnemyHPBar>().UpdateArrows();
 
     audiosource = GetComponent<AudioSource>();
+
   }
 
   // Update is called once per frame
@@ -76,7 +76,7 @@ public class Enemy : MonoBehaviour
     if (hp <= 0f)
     {
       cc.ChangeYinYang(isYin, 10);
-      DestroySelf();
+
       cc.rewardPoints(1);
       if (isYin == false)
       { cc.killedYang += 1; }
@@ -84,11 +84,13 @@ public class Enemy : MonoBehaviour
       { cc.killedYin += 1; }
       if (!GlobalStaticVars.hasViewedYYBarTutorial && !GlobalStaticVars.skipTutorial)
       {
+        EnemyTutorial.SetActive(false);
         Time.timeScale = 0;
-        YYBarTutorial.SetActive(true);
         GlobalStaticVars.inTutorial = true;
+        YYBarTutorial.SetActive(true);
         GlobalStaticVars.hasViewedYYBarTutorial = true;
       }
+        DestroySelf();
     }
   }
 

@@ -130,6 +130,7 @@ public class Attack : MonoBehaviour
       }
       else
       {
+        if (GlobalStaticVars.inTutorial) return;
         Instantiate(wrongBeam, new Vector3(0.1f, 1, 5), Quaternion.identity);
         allowAttack = false;
       }
@@ -146,6 +147,7 @@ public class Attack : MonoBehaviour
       }
       else
       {
+        if (GlobalStaticVars.inTutorial) return;
         Instantiate(wrongBeam, new Vector3(0.1f, 1, 5), Quaternion.identity);
         allowAttack = false;
       }

@@ -52,10 +52,10 @@ public class EnemyHPBar : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
-        int i;
-        for (i = 0; i < 4; i++)
-        {
-            switch (enemyScript.arrayOfInts[i])
+        //int i;
+        //for (i = 0; i < 1; i++)
+        //{
+            switch (enemyScript.arrayOfInts[0])
             {
                 case 1:
                     arrow = Instantiate(UpArrow);
@@ -74,6 +74,6 @@ public class EnemyHPBar : MonoBehaviour
                     arrow.transform.SetParent(arrowContainer.transform, false);
                     break;
             }
-        }
+        //}
     }
 }

@@ -25,7 +25,7 @@ public class RewardEnemy : MonoBehaviour
   {
     arrayOfInts = new List<int>();
     cc = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterControll>();
-    Tutorial = GameObject.Find("Canvas").transform.Find("RewardTutorial").gameObject;
+    Tutorial = GameObject.FindGameObjectWithTag("Canvas").transform.Find("RewardTutorial").gameObject;
     GenerateMoves();
 
 

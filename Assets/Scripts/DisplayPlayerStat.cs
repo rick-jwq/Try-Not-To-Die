@@ -29,7 +29,7 @@ public class DisplayPlayerStat : MonoBehaviour
         float yin = cc.yin / 100f;
         float factor = (yin - 0.5f) * 2f;
         float sign = yin == 0.5f? 1 : (yin - 0.5f) / Mathf.Abs(yin - 0.5f);
-        YinValue.localPosition = Vector3.Lerp(YinValue.localPosition, new Vector3(sign * 160f * factor * factor, 0, 0), 4f * Time.deltaTime);
+        YinValue.localPosition = Vector3.Lerp(YinValue.localPosition, new Vector3(sign * 160f * factor * factor, 0, 0), 4f * Time.unscaledDeltaTime);
         points.text = "Score: " + cc.points.ToString();
     }
 }
