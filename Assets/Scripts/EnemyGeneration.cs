@@ -8,6 +8,8 @@ public class EnemyGeneration : MonoBehaviour
     public GameObject YinEnemy;
     public GameObject YangEnemy;
     public GameObject RewardEnemy;
+    public GameObject NeutralEnemy;
+    public GameObject ReverseEnemy;
 
     public float diffChangeTime = 30f;
     public float startHP;
@@ -85,15 +87,28 @@ public class EnemyGeneration : MonoBehaviour
         {
             return;
         }
-
-        if (Random.Range(0f, 1f) < 0.05f)
+        float randomValue = Random.Range(0f, 1f);
+        if (randomValue < 0.05f)
         {
             GameObject enemy = Instantiate(RewardEnemy, new Vector3(25, 1, 5), Quaternion.identity);
             isGenerating = false;
             return;
         }
-
-        if (Random.Range(0f, 100f) < yinSpawnChance)
+        if (randomValue < 0.15f)
+        {
+            GameObject enemy = Instantiate(NeutralEnemy, new Vector3(25, 1, 5), Quaternion.identity);
+            enemy.GetComponent<Enemy>().setHP(curHP);
+            enemy.GetComponent<Enemy>().setMS(curMS);
+            enemysGenerated++;
+        }
+        else if (randomValue < 0.30f || randomValue > 0.15f)
+        {
+            GameObject enemy = Instantiate(ReverseEnemy, new Vector3(25, 1, 5), Quaternion.identity);
+            enemy.GetComponent<Enemy>().setHP(curHP);
+            enemy.GetComponent<Enemy>().setMS(curMS);
+            enemysGenerated++;
+        }
+        else if (Random.Range(0f, 100f) < yinSpawnChance)
         {
             GameObject enemy = Instantiate(YinEnemy, new Vector3(25, 1, 5), Quaternion.identity);
             enemy.GetComponent<Enemy>().setHP(curHP);

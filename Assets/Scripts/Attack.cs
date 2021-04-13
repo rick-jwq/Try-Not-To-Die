@@ -66,7 +66,7 @@ public class Attack : MonoBehaviour
         // if the enemy array is not empty or its first int is equal to our attack direction
         if (target && (target.arrayOfInts.Count > 0))
         {
-            if(target.arrayOfInts[0] == 1)
+            if(target.arrayOfInts[0] == 1 || target.arrayOfInts[0] == 6 && target.isReverse)
             {
                 target.arrayOfInts.RemoveAt(0);
                 target.TakeDamage(cc.attack);
@@ -101,7 +101,7 @@ public class Attack : MonoBehaviour
     {
         if (target && (target.arrayOfInts.Count > 0))
         {
-            if (target.arrayOfInts[0] == 2)
+            if (target.arrayOfInts[0] == 2 || target.arrayOfInts[0] == 5 && target.isReverse)
             {
                 target.arrayOfInts.RemoveAt(0);
                 target.TakeDamage(cc.attack);
@@ -136,7 +136,7 @@ public class Attack : MonoBehaviour
     {
         if (target && (target.arrayOfInts.Count > 0))
         {
-            if (target.arrayOfInts[0] == 3)
+            if (target.arrayOfInts[0] == 3 || target.arrayOfInts[0] == 7 && target.isReverse)
             {
                 target.arrayOfInts.RemoveAt(0);
                 target.TakeDamage(cc.attack);
@@ -172,7 +172,7 @@ public class Attack : MonoBehaviour
     {
         if (target && (target.arrayOfInts.Count > 0))
         {
-            if (target.arrayOfInts[0] == 4)
+            if (target.arrayOfInts[0] == 4 || target.arrayOfInts[0] == 8 && target.isReverse)
             {
                 target.arrayOfInts.RemoveAt(0);
                 target.TakeDamage(cc.attack);

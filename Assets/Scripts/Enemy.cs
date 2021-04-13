@@ -8,6 +8,8 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     public float movingSpeed = 2f;
     public bool isYin = false;
+    public bool isNeutral = false;
+    public bool isReverse = false;
 
     //one move kills one hp
     public float max_hp { get; set; }
@@ -58,14 +60,16 @@ public class Enemy : MonoBehaviour
         barInstance.GetComponent<EnemyHPBar>().UpdateArrows();
 
         if (hp <= 0f) {
-            cc.ChangeYinYang(isYin,10);
+            if (!isNeutral)
+            {
+                cc.ChangeYinYang(isYin,10);
+                if (isYin == false)
+                { cc.killedYang += 1; }
+                else
+                { cc.killedYin += 1; }
+            }
             DestroySelf();
             cc.rewardPoints(1);
-            if (isYin == false)
-            {cc.killedYang+=1;}
-            else
-            {cc.killedYin+=1;}
-
         }
     }
 
@@ -74,12 +78,22 @@ public class Enemy : MonoBehaviour
     //2:down
     //3:left
     //4:right
+    //5:shows as up but should be down
+    //6:shows as down but should be up
+    //7:shows as left but should be right
+    //8:shows as right but should be left
     private void GenerateMoves()
     {
-
         for (int i = 0; i < 4; i++)
         {
-            arrayOfInts.Add(Random.Range(1, 5));
+            if (isReverse)
+            {
+                arrayOfInts.Add(Random.Range(5, 9));
+            }
+            else
+            {
+                arrayOfInts.Add(Random.Range(1, 5));
+            }
         }
     }
 
@@ -114,10 +128,13 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             cc.ChangeHealth(-10);
-            if (isYin == false)
-            {cc.damageYang+=1;}
-            else
-            {cc.damageYin+=1;}
+            if (!isNeutral)
+            {
+                if (isYin == false)
+                { cc.damageYang += 1; }
+                else
+                { cc.damageYin += 1; }
+            }
             DestroySelf();
         }
     }
