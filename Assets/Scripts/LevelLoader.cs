@@ -12,7 +12,7 @@ public class LevelLoader : MonoBehaviour
 
         if(GlobalStaticVars.level == 1)
         {
-            GlobalStaticVars.enemyHP = 3f;
+            GlobalStaticVars.enemyHP = 30f;
             GlobalStaticVars.enemyMS = 2f;
             GlobalStaticVars.enemyNumber = 10;
             GlobalStaticVars.LevelTime = 0;
@@ -22,7 +22,7 @@ public class LevelLoader : MonoBehaviour
         }
         if (GlobalStaticVars.level == 2)
         {
-            GlobalStaticVars.enemyHP = 5f;
+            GlobalStaticVars.enemyHP = 50f;
             GlobalStaticVars.enemyMS = 2.5f;
             GlobalStaticVars.enemyNumber = 20;
             GlobalStaticVars.LevelTime = 0;
@@ -32,7 +32,7 @@ public class LevelLoader : MonoBehaviour
         }
         if (GlobalStaticVars.level == 3)
         {
-            GlobalStaticVars.enemyHP = 10f;
+            GlobalStaticVars.enemyHP = 100f;
             GlobalStaticVars.enemyMS = 3f;
             GlobalStaticVars.enemyNumber = 30;
             GlobalStaticVars.LevelTime = 0;

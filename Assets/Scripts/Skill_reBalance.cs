@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class Skill_reBalance : Skill
 {
+    private bool isInEffect = false;
+    private float effectTimer = 5f;
+
     //private CharacterControll cc;
     private void Start()
     {
@@ -20,6 +23,8 @@ public class Skill_reBalance : Skill
         {
             cc.ChangeStoredYin(-Yincost);
             cc.ChangeStoredYang(-Yangcost);
+            isInEffect = true;
+
             cc.usedSkill5 += 1;
 
             cc.reBalance();
@@ -28,5 +33,17 @@ public class Skill_reBalance : Skill
     private void Update()
     {
         base.onUpdate();
+        if (isInEffect)
+        {
+            effectTimer -= Time.deltaTime;
+            cc.reBalance();
+            //Effect
+
+            if (effectTimer <= 0)
+            {
+                effectTimer = 5f;
+                isInEffect = false;
+            }
+        }
     }
 }

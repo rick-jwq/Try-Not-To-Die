@@ -138,7 +138,7 @@ public class Enemy : MonoBehaviour
   {
     if (other.gameObject.tag == "Player")
     {
-      cc.ChangeHealth(-10);
+      cc.ChangeHealth(-20);
       if (isYin == false)
       { cc.damageYang += 1; }
       else

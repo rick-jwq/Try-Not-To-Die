@@ -44,15 +44,15 @@ public class CharacterControll : MonoBehaviour
   public float currentHealth;
   public float health { get { return currentHealth; } }
 
-  int currentYin;
-  public int yin { get { return currentYin; } }
+  float currentYin;
+  public float yin { get { return currentYin; } }
 
-  int currentYang;
-  public int yang { get { return currentYang; } }
+  float currentYang;
+  public float yang { get { return currentYang; } }
 
-  int currentStoredYin=0;
+  int currentStoredYin;
   public int storedYin { get { return currentStoredYin; } }
-  int currentStoredYang=0;
+  int currentStoredYang;
   public int storedYang { get { return currentStoredYang; } }
   private Rigidbody rb;
 
@@ -105,12 +105,12 @@ public class CharacterControll : MonoBehaviour
 
         maxHealth = GlobalStaticVars.playerHP;
         currentHealth = maxHealth;
+        currentStoredYin = GlobalStaticVars.StoredYin;
+        currentStoredYang = GlobalStaticVars.StoredYang;
         attack = GlobalStaticVars.playerAttack;
 
         points = GlobalStaticVars.playerPoints;
 
-    currentStoredYin = 0;
-    currentStoredYang = 0;
 
     currentYin = initYin;
     currentYang = maxYang - initYin;
@@ -175,7 +175,7 @@ public class CharacterControll : MonoBehaviour
     currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
   }
 
-  public void ChangeYinYang(bool isYin, int amount)
+  public void ChangeYinYang(bool isYin, float amount)
   {
     if (!isYin) amount = -amount;
 
@@ -234,7 +234,14 @@ public class CharacterControll : MonoBehaviour
 
     public void reBalance()
   {
-    currentYin = initYin;
-    currentYang = maxYang - initYin;
+    if (currentYin >= currentYang)
+    {
+       ChangeYinYang(false, 0.01f);
+    }
+    else
+    {
+       ChangeYinYang(true, 0.01f);
+    }
+    
   }
 }

@@ -87,7 +87,7 @@ public class EnemyGeneration : MonoBehaviour
             return;
         }
 
-        if (Random.Range(0f, 1f) < 0.05f)
+        if (Random.Range(0f, 1f) < 0.10f)
         {
             GameObject enemy = Instantiate(RewardEnemy, new Vector3(25, 1, 5), Quaternion.identity);
             isGenerating = false;
