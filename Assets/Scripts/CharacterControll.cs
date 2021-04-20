@@ -121,10 +121,9 @@ public class CharacterControll : MonoBehaviour
     foreach (GameObject skill in GlobalStaticVars.skills)
     {
             GameObject skillInstance = Instantiate(skill);
-
             skillInstance.transform.SetParent(SkillContainer.transform);
-            
-    }
+            skillInstance.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+        }
   }
 
     // Update is called once per frame
