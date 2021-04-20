@@ -29,6 +29,9 @@ public class EnemyGeneration : MonoBehaviour
 
   public int enemysGenerated { get; set; } = 0;
 
+  private bool hasGeneratedReverse = false;
+  private bool hasGeneratedFlashy = false;
+
   public bool isGenerating { get; set; }
 
   public GameObject GameState;
@@ -103,13 +106,17 @@ public class EnemyGeneration : MonoBehaviour
       {
         float random = Random.Range(0f, 1f);
         if (random < 0.1f)
+        {
+          hasGeneratedReverse = true;
           enemy.GetComponent<Enemy>().isReverse = true;
+        }
         else if (random < 0.2f)
         {
+          hasGeneratedFlashy = true;
           enemy.GetComponent<Enemy>().isFlashy = true;
           enemy.GetComponent<Enemy>().setHP(1f);
         }
-        else if (random < 0.3f)
+        else if (random < 0.3f && hasGeneratedReverse && hasGeneratedFlashy)
         {
           enemy.GetComponent<Enemy>().isReverse = true;
           enemy.GetComponent<Enemy>().isFlashy = true;
@@ -129,13 +136,17 @@ public class EnemyGeneration : MonoBehaviour
       {
         float random = Random.Range(0f, 1f);
         if (random < 0.1f)
+        {
+          hasGeneratedReverse = true;
           enemy.GetComponent<Enemy>().isReverse = true;
+        }
         else if (random < 0.2f)
         {
+          hasGeneratedFlashy = true;
           enemy.GetComponent<Enemy>().isFlashy = true;
           enemy.GetComponent<Enemy>().setHP(1f);
         }
-        else if (random < 0.3f)
+        else if (random < 0.3f && hasGeneratedReverse && hasGeneratedFlashy)
         {
           enemy.GetComponent<Enemy>().isReverse = true;
           enemy.GetComponent<Enemy>().isFlashy = true;
