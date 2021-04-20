@@ -2007,7 +2007,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Score: 0'
+  m_Text: 'Your Points: 0'
 --- !u!222 &599790671
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6744,7 +6744,7 @@ MonoBehaviour:
   RewardEnemy: {fileID: 5854889768447641417, guid: 8d419315e85a9b54aadf2de6bf76b05a,
     type: 3}
   diffChangeTime: 30
-  startHP: 3
+  startHP: 30
   startMS: 2
   startSpawnTime: 3
   HPincrement: 1
@@ -8100,7 +8100,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -200, y: -100}
-  m_SizeDelta: {x: 200, y: 60}
+  m_SizeDelta: {x: 241.89, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1824780394
 MonoBehaviour:

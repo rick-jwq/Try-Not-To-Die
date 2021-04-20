@@ -18,7 +18,7 @@ public class DisplayPlayerStat : MonoBehaviour
         cc = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterControll>();
         HPValue = transform.GetChild(0).GetComponentsInChildren<RectTransform>()[1];
         YinValue = transform.GetChild(1).GetComponentsInChildren<RectTransform>()[1];
-        points.text = "Score: " + cc.points.ToString();
+        points.text = "Your Points: " + cc.points.ToString();
     }
 
     // Update is called once per frame
@@ -30,6 +30,6 @@ public class DisplayPlayerStat : MonoBehaviour
         float factor = (yin - 0.5f) * 2f;
         float sign = yin == 0.5f? 1 : (yin - 0.5f) / Mathf.Abs(yin - 0.5f);
         YinValue.localPosition = Vector3.Lerp(YinValue.localPosition, new Vector3(sign * 160f * factor * factor, 0, 0), 4f * Time.unscaledDeltaTime);
-        points.text = "Score: " + cc.points.ToString();
+        points.text = "Your Points: " + cc.points.ToString();
     }
 }
