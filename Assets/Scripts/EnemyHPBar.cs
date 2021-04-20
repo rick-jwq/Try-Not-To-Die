@@ -62,15 +62,15 @@ public class EnemyHPBar : MonoBehaviour
                     arrow.transform.SetParent(arrowContainer.transform, false);
                     break;
                 case 2:
-                    arrow = Instantiate(DownArrow);
-                    arrow.transform.SetParent(arrowContainer.transform, false);
-                    break;
-                case 3:
                     arrow = Instantiate(LeftArrow);
                     arrow.transform.SetParent(arrowContainer.transform, false);
                     break;
-                case 4:
+                case 3:
                     arrow = Instantiate(RightArrow);
+                    arrow.transform.SetParent(arrowContainer.transform, false);
+                    break;
+                case 4:
+                    arrow = Instantiate(DownArrow);
                     arrow.transform.SetParent(arrowContainer.transform, false);
                     break;
             }

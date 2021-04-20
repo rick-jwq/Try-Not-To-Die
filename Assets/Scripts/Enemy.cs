@@ -8,9 +8,11 @@ public class Enemy : MonoBehaviour
   // Start is called before the first frame update
   public float movingSpeed = 2f;
   public bool isYin = false;
+  public bool isReverse = false;
+  public bool isFlashy = false;
 
   //one move kills one hp
-  public float max_hp { get; set; }
+    public float max_hp { get; set; }
   public float hp { get; set; } = 4f;
 
   //array contains all the attack moves player have to make
@@ -30,13 +32,19 @@ public class Enemy : MonoBehaviour
 
   private AudioSource audiosource;
   private GameObject EnemyTutorial;
+  private GameObject ReverseEnemyTutorial;
+  private GameObject FlashyEnemyTutorial;
   private GameObject YYBarTutorial;
+
+  private float flashyTimer = 0f;
 
   void Start()
   {
     arrayOfInts = new List<int>();
     cc = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterControll>();
     EnemyTutorial = GameObject.FindGameObjectWithTag("Canvas").transform.Find("EnemyTutorial").gameObject;
+    ReverseEnemyTutorial = GameObject.FindGameObjectWithTag("Canvas").transform.Find("ReverseEnemyTutorial").gameObject;
+    FlashyEnemyTutorial = GameObject.FindGameObjectWithTag("Canvas").transform.Find("FlashyEnemyTutorial").gameObject;
     YYBarTutorial = GameObject.FindGameObjectWithTag("Canvas").transform.Find("YinYangBarTutorial").gameObject;
     GenerateMoves();
 
@@ -49,6 +57,14 @@ public class Enemy : MonoBehaviour
 
     audiosource = GetComponent<AudioSource>();
 
+    if(isReverse)
+    {
+      transform.Find("ReverseCircle").gameObject.SetActive(true);
+    }
+    if (isFlashy)
+    {
+      transform.Find("FlashyCircle").gameObject.SetActive(true);
+    }
   }
 
   // Update is called once per frame
@@ -64,6 +80,38 @@ public class Enemy : MonoBehaviour
       GlobalStaticVars.inTutorial = true;
       GlobalStaticVars.hasViewedEnemyTutorial = true;
     }
+
+
+
+    if(isFlashy)
+    {
+      flashyTimer += Time.unscaledDeltaTime;
+
+      if(flashyTimer >= 0.8f)
+      {
+        arrayOfInts.RemoveAt(0);
+        arrayOfInts.Add(Random.Range(1, 5));
+        if(barInstance)
+          barInstance.GetComponent<EnemyHPBar>().UpdateArrows();
+        flashyTimer = 0f;
+      }
+    }
+
+    if (isReverse && !GlobalStaticVars.hasViewedReverseEnemyTutorial && !GlobalStaticVars.skipTutorial && position.x < 16.5)
+    {
+      Time.timeScale = 0;
+      ReverseEnemyTutorial.SetActive(true);
+      GlobalStaticVars.inTutorial = true;
+      GlobalStaticVars.hasViewedReverseEnemyTutorial = true;
+    }
+    else if (isFlashy && !GlobalStaticVars.hasViewedFlashyEnemyTutorial && !GlobalStaticVars.skipTutorial && position.x < 16.5)
+    {
+      Time.timeScale = 0;
+      FlashyEnemyTutorial.SetActive(true);
+      GlobalStaticVars.inTutorial = true;
+      GlobalStaticVars.hasViewedFlashyEnemyTutorial = true;
+    }
+
   }
 
   public void TakeDamage(float attackDamage)
@@ -96,9 +144,9 @@ public class Enemy : MonoBehaviour
 
   // method to generate moves. 
   //1:up
-  //2:down
-  //3:left
-  //4:right
+  //2:left
+  //3:right
+  //4:down
   private void GenerateMoves()
   {
 

@@ -80,7 +80,7 @@ public class Attack : MonoBehaviour
             animator.SetTrigger("punch1");
             punchleft = !punchleft;
           }
-          attack(2);
+          attack(4);
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
@@ -94,7 +94,7 @@ public class Attack : MonoBehaviour
             animator.SetTrigger("punch1");
             punchleft = !punchleft;
           }
-          attack(3);
+          attack(2);
         }
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
@@ -108,7 +108,7 @@ public class Attack : MonoBehaviour
             animator.SetTrigger("punch1");
             punchleft = !punchleft;
           }
-          attack(4);
+          attack(3);
         }
       }
     }
@@ -120,7 +120,7 @@ public class Attack : MonoBehaviour
     // if the enemy array is not empty or its first int is equal to our attack direction
     if (target && (target.arrayOfInts.Count > 0))
     {
-      if (target.arrayOfInts[0] == way)
+      if (target.isReverse? target.arrayOfInts[0] == 5 - way : target.arrayOfInts[0] == way)
       {
         Instantiate(beam, new Vector3(0.1f, 1, 5), Quaternion.identity);
         target.arrayOfInts.RemoveAt(0);

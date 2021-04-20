@@ -21,7 +21,11 @@ public static class GlobalStaticVars
 
     public static bool skipTutorial { get; set; } = false;
     public static bool hasViewedEnemyTutorial { get; set; } = false;
-    public static bool hasViewedEnergyTutorial { get; set; } = false;
+
+    public static bool hasViewedReverseEnemyTutorial { get; set; } = false;
+
+  public static bool hasViewedFlashyEnemyTutorial { get; set; } = false;
+  public static bool hasViewedEnergyTutorial { get; set; } = false;
     public static bool hasViewedYYBarTutorial { get; set; } = false;
     public static bool hasViewedSkillTutorial { get; set; } = false;
     public static bool hasViewedHPBarTutorial { get; set; } = false;

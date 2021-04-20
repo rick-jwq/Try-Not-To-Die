@@ -4,114 +4,151 @@ using UnityEngine;
 
 public class EnemyGeneration : MonoBehaviour
 {
-    private CharacterControll cc;
-    public GameObject YinEnemy;
-    public GameObject YangEnemy;
-    public GameObject RewardEnemy;
+  private CharacterControll cc;
+  public GameObject YinEnemy;
+  public GameObject YangEnemy;
+  public GameObject RewardEnemy;
 
-    public float diffChangeTime = 30f;
-    public float startHP;
-    public float startMS;
-    public float startSpawnTime = 3f;
-    public float HPincrement = 1f;
-    public float MSincrement = 1f;
-    public float spawnTimeDecrement = 0.5f;
+  public float diffChangeTime = 30f;
+  public float startHP;
+  public float startMS;
+  public float startSpawnTime = 3f;
+  public float HPincrement = 1f;
+  public float MSincrement = 1f;
+  public float spawnTimeDecrement = 0.5f;
 
 
-    private float spawnTimer = 0f;
-    private float yinSpawnChance;
-    private float timer = 0f;
-    private float curHP;
-    private float curMS;
-    private float curSpawnTime;
+  private float spawnTimer = 0f;
+  private float yinSpawnChance;
+  private float timer = 0f;
+  private float curHP;
+  private float curMS;
+  private float curSpawnTime;
 
-    public static EnemyGeneration instance;
+  public static EnemyGeneration instance;
 
-    public int enemysGenerated { get; set; } = 0;
+  public int enemysGenerated { get; set; } = 0;
 
-    public bool isGenerating { get; set; }
+  public bool isGenerating { get; set; }
 
-    public GameObject GameState;
+  public GameObject GameState;
 
-    // Start is called before the first frame update
-    void Start()
+  // Start is called before the first frame update
+  void Start()
+  {
+    cc = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterControll>();
+    startHP = GlobalStaticVars.enemyHP;
+    startMS = GlobalStaticVars.enemyMS;
+    curHP = startHP;
+    curMS = startMS;
+    curSpawnTime = startSpawnTime;
+
+    yinSpawnChance = cc.yin;
+
+    isGenerating = true;
+
+    instance = this;
+  }
+
+  private void Update()
+  {
+    timer += Time.deltaTime;
+    //if(timer >= diffChangeTime)
+    //{
+    //    timer = 0f;
+
+    //    if(curHP < 5f)
+    //    {
+    //        curHP += HPincrement;
+    //    }
+    //    if(curMS < 5f)
+    //    {
+    //        curMS += MSincrement;
+    //    }
+    //    if(curSpawnTime > 1f)
+    //    {
+    //        curSpawnTime -= spawnTimeDecrement;
+    //    }
+    //    yinSpawnChance = cc.yin;
+    //}
+
+    spawnTimer += Time.deltaTime;
+    if (spawnTimer >= curSpawnTime)
     {
-        cc = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterControll>();
-        startHP = GlobalStaticVars.enemyHP;
-        startMS = GlobalStaticVars.enemyMS;
-        curHP = startHP;
-        curMS = startMS;
-        curSpawnTime = startSpawnTime;
+      EnemyCreate();
+      spawnTimer = 0f;
+    }
+  }
 
-        yinSpawnChance = cc.yin;
-
-        isGenerating = true;
-
-        instance = this;
+  void EnemyCreate()
+  {
+    if (!isGenerating)
+    {
+      return;
     }
 
-    private void Update()
+    if (Random.Range(0f, 1f) < 0.05f)
     {
-        timer += Time.deltaTime;
-        //if(timer >= diffChangeTime)
-        //{
-        //    timer = 0f;
-
-        //    if(curHP < 5f)
-        //    {
-        //        curHP += HPincrement;
-        //    }
-        //    if(curMS < 5f)
-        //    {
-        //        curMS += MSincrement;
-        //    }
-        //    if(curSpawnTime > 1f)
-        //    {
-        //        curSpawnTime -= spawnTimeDecrement;
-        //    }
-        //    yinSpawnChance = cc.yin;
-        //}
-
-        spawnTimer += Time.deltaTime;
-        if(spawnTimer >= curSpawnTime)
-        {
-            EnemyCreate();
-            spawnTimer = 0f;
-        }
+      GameObject enemy = Instantiate(RewardEnemy, new Vector3(25, 1, 5), Quaternion.identity);
+      isGenerating = false;
+      return;
     }
 
-    void EnemyCreate()
+    if (Random.Range(0f, 100f) < yinSpawnChance)
     {
-        if (!isGenerating) 
+      GameObject enemy = Instantiate(YinEnemy, new Vector3(25, 1, 5), Quaternion.identity);
+      enemy.GetComponent<Enemy>().setHP(curHP);
+      enemy.GetComponent<Enemy>().setMS(curMS);
+      if (enemysGenerated >= 1)
+      {
+        float random = Random.Range(0f, 1f);
+        if (random < 0.1f)
+          enemy.GetComponent<Enemy>().isReverse = true;
+        else if (random < 0.2f)
         {
-            return;
+          enemy.GetComponent<Enemy>().isFlashy = true;
+          enemy.GetComponent<Enemy>().setHP(1f);
         }
+        else if (random < 0.3f)
+        {
+          enemy.GetComponent<Enemy>().isReverse = true;
+          enemy.GetComponent<Enemy>().isFlashy = true;
+          enemy.GetComponent<Enemy>().setHP(1f);
+        }
+      }
 
-        if (Random.Range(0f, 1f) < 0.10f)
-        {
-            GameObject enemy = Instantiate(RewardEnemy, new Vector3(25, 1, 5), Quaternion.identity);
-            isGenerating = false;
-            return;
-        }
 
-        if (Random.Range(0f, 100f) < yinSpawnChance)
-        {
-            GameObject enemy = Instantiate(YinEnemy, new Vector3(25, 1, 5), Quaternion.identity);
-            enemy.GetComponent<Enemy>().setHP(curHP);
-            enemy.GetComponent<Enemy>().setMS(curMS);
-            enemysGenerated++;
-        }
-        else
-        {
-            GameObject enemy = Instantiate(YangEnemy, new Vector3(25, 1, 5), Quaternion.identity);
-            enemy.GetComponent<Enemy>().setHP(curHP);
-            enemy.GetComponent<Enemy>().setMS(curMS);
-            enemysGenerated++;
-        }
+      enemysGenerated++;
     }
-
-    public float getCurMS()
+    else
     {
-        return curMS;
+      GameObject enemy = Instantiate(YangEnemy, new Vector3(25, 1, 5), Quaternion.identity);
+      enemy.GetComponent<Enemy>().setHP(curHP);
+      enemy.GetComponent<Enemy>().setMS(curMS);
+      if (enemysGenerated >= 1)
+      {
+        float random = Random.Range(0f, 1f);
+        if (random < 0.1f)
+          enemy.GetComponent<Enemy>().isReverse = true;
+        else if (random < 0.2f)
+        {
+          enemy.GetComponent<Enemy>().isFlashy = true;
+          enemy.GetComponent<Enemy>().setHP(1f);
+        }
+        else if (random < 0.3f)
+        {
+          enemy.GetComponent<Enemy>().isReverse = true;
+          enemy.GetComponent<Enemy>().isFlashy = true;
+          enemy.GetComponent<Enemy>().setHP(1f);
+        }
+      }
+
+      enemysGenerated++;
     }
+  }
+
+  public float getCurMS()
+  {
+    return curMS;
+  }
 }
